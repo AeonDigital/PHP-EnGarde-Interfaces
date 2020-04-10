@@ -1,0 +1,24 @@
+{
+    "name": "aeondigital/phpengardeinterfaces",
+    "description": "Interfaces do Micro-Framework EnGarde.",
+    "version": "v0.5.0-beta",
+    "time": "2020-04-09",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Rianna Cantarelli",
+            "email": "rianna.aeon@gmail.com",
+            "homepage": "http://aeondigital.com.br",
+            "role": "developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
