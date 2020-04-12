@@ -17,6 +17,7 @@ use AeonDigital\Interfaces\Http\iFactory as iFactory;
  * em que a requisição ``HTTP`` é recebida.
  *
  * Normalmente servirá como um wrapper para os valores da variável ``$_SERVER``.
+ * As propriedades que podem ser definidas (set) não devem poder ser sobrescritas.
  *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
@@ -31,14 +32,23 @@ interface iServer
 
 
     /**
+     * Data e hora do momento em que a requisição que ativou a aplicação
+     * chegou ao domínio.
+     *
+     * @return      \DateTime
+     */
+    function getNow() : \DateTime;
+
+
+
+    /**
      * Resgata um array associativo contendo todas as variáveis definidas para o servidor no
      * momento atual.
      *
-     * Será retornado ``null`` caso nada tenha sido definido.
-     *
-     * @return      ?array
+     * @return      array
+     *              Será retornado ``[]`` caso nada tenha sido definido.
      */
-    function getServerVariables() : ?array;
+    function getServerVariables() : array;
 
 
 
@@ -119,21 +129,18 @@ interface iServer
 
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Retorna uma coleção de headers ``HTTP`` definidos para a requisição que está sendo
-     * executada.
-     *
-     * Retornará ``[]`` caso nenhum seja encontrado.
+     * Retorna uma coleção de headers ``HTTP`` definidos.
      *
      * @return      array
+     *              Retornará ``[]`` caso nenhum seja encontrado.
      */
     function getRequestHeaders() : array;
     /**
      * Baseado nos dados da requisição que está sendo executada.
      * Retorna a versão do protocolo ``HTTP``.
      *
-     * Caso não seja possível identificar a versão deve ser retornado o valor ``1.1``.
-     *
      * @return      string
+     *              Caso não seja possível identificar a versão deve ser retornado o valor ``1.1``.
      */
     function getRequestHTTPVersion() : string;
     /**
@@ -199,9 +206,8 @@ interface iServer
      * Retorna um array de objetos que implementam ``AeonDigital\Interfaces\Stream\iFileStream``
      * representando os arquivos que foram submetidos durante a requisição.
      *
-     * Os arquivos são resgatados de ``$_FILES``.
-     *
      * @return      array
+     *              Os arquivos são resgatados de ``$_FILES``.
      */
     function getRequestFiles() : array;
 

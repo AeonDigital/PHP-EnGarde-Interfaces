@@ -15,7 +15,7 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 /**
  * Nesta interface estão as configurações básicas para o funcionamento de um Domínio.
  *
- * Todas as propriedades aqui descritas não devem poder ser alteradas após serem definidas.
+ * As propriedades que podem ser definidas (set) não devem poder ser sobrescritas.
  *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
@@ -26,15 +26,6 @@ interface iDomain
 {
 
 
-
-
-
-    /**
-     * Resgata a data e hora do momento em que a requisição chegou ao domínio.
-     *
-     * @return      \DateTime
-     */
-    function getNow() : \DateTime;
 
 
 
