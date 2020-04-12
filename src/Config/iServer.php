@@ -5,7 +5,7 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 
 use AeonDigital\Interfaces\Http\iFactory as iFactory;
 use AeonDigital\EnGarde\Interfaces\Config\iEngine as iEngine;
-
+use AeonDigital\Interfaces\Http\Message\iServerRequest as iServerRequest;
 
 
 
@@ -66,26 +66,6 @@ interface iServer
      * @return      void
      */
     function setServerVariables(array $oServer) : void;
-
-
-
-
-    /**
-     * Retorna um objeto ``iFactory``.
-     *
-     * @return      iFactory
-     */
-    function getHttpFactory() : iFactory;
-    /**
-     * Define uma instância ``iFactory`` para ser usada.
-     *
-     * @param       iFactory $httpFactory
-     *              Instância a ser definida.
-     *
-     * @return      void
-     */
-    function setHttpFactory(iFactory $httpFactory) : void;
-
 
 
 
@@ -250,15 +230,21 @@ interface iServer
 
 
     /**
-     * Inicia a instância ``Config\iEngine`` a ser usada.
+     * Retorna um objeto ``iFactory``.
      *
-     * @return      void
+     * @return      iFactory
      */
-    function initiEngineConfig() : void;
+    function getHttpFactory() : iFactory;
     /**
      * Retorna a instância ``Config\iEngine``.
      *
      * @return      iEngine
      */
     function getEngineConfig() : iEngine;
+    /**
+     * Retorna a instância ``iServerRequest`` a ser usada.
+     *
+     * @return iServerRequest
+     */
+    function getServerRequest() : iServerRequest;
 }

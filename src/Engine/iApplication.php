@@ -28,14 +28,6 @@ interface iApplication
 
 
     /**
-     * Permite configurar ou redefinir o objeto de configuração da aplicação na classe concreta
-     * da mesma.
-     */
-    function configureApplication() : void;
-
-
-
-    /**
      * Inicia o processamento da rota selecionada.
      *
      * @return      void
