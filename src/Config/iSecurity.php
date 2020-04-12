@@ -15,6 +15,8 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 /**
  * Interface usada para representar as configuração de segurança para uma aplicação.
  *
+ * Nenhuma das propriedades definidas devem poder ser sobrescritas.
+ *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
  * @copyright   2020, Rianna Cantarelli
