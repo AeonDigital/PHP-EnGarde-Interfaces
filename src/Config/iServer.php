@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
 use AeonDigital\Interfaces\Http\iFactory as iFactory;
-
+use AeonDigital\EnGarde\Interfaces\Config\iEngine as iEngine;
 
 
 
@@ -244,4 +244,21 @@ interface iServer
      * @return      array
      */
     function getPostedData() : array;
+
+
+
+
+
+    /**
+     * Inicia a instância ``Config\iEngine`` a ser usada.
+     *
+     * @return      void
+     */
+    function initiEngineConfig() : void;
+    /**
+     * Retorna a instância ``Config\iEngine``.
+     *
+     * @return      iEngine
+     */
+    function getEngineConfig() : iEngine;
 }

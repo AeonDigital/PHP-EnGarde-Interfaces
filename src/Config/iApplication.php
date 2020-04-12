@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
-use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurityConfig;
+use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
 
 
 
@@ -401,10 +401,19 @@ interface iApplication
     /**
      * Retorna as configurações de segurança da aplicação se estas forem definidas.
      *
-     * @return      ?iSecurityConfig
+     * @return      ?iSecurity
      */
-    function getSecurityConfig() : ?iSecurityConfig;
-
+    function getSecurityConfig() : ?iSecurity;
+    /**
+     * Inicia a instância ``Config\iSecurity`` a ser usada a partir das definições encontradas
+     * na constante ``ENVIRONMENT_SETTINGS`` para a aplicação atual.
+     *
+     * @param       ?iSecurity $securityConfig
+     *              Instância de configurações de segurança a serem usadas.
+     *
+     * @return      void
+     */
+    function initiSecurityConfig(?iSecurity $securityConfig = null) : void;
 
 
 

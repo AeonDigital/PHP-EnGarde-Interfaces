@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
-
+use AeonDigital\EnGarde\Interfaces\Config\iApplication as iApplication;
 
 
 
@@ -353,4 +353,21 @@ interface iEngine
      *              inválido.
      */
     function setPHPConfiguration() : void;
+
+
+
+
+
+    /**
+     * Retorna a instância ``Config\iApplication``.
+     *
+     * @return      iApplication
+     */
+    function getApplicationConfig() : iApplication;
+    /**
+     * Inicia a instância ``Config\iApplication`` a ser usada.
+     *
+     * @return      void
+     */
+    function initiApplicationConfig() : void;
 }
