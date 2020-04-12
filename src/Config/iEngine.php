@@ -13,7 +13,8 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 
 
 /**
- * Nesta interface estão as configurações básicas para o funcionamento de um Domínio.
+ * Nesta interface estão as configurações básicas para o funcionamento
+ * do Engine EnGarde.
  *
  * As propriedades que podem ser definidas (set) não devem poder ser sobrescritas.
  *
@@ -22,7 +23,7 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
  * @copyright   2020, Rianna Cantarelli
  * @license     ADPL-v1.0
  */
-interface iDomain
+interface iEngine
 {
 
 
@@ -35,15 +36,7 @@ interface iDomain
      * @return      string
      */
     function getVersion() : string;
-    /**
-     * Define a versão atual do framework.
-     *
-     * @param       string $version
-     *              Indique a versão do framework.
-     *
-     * @return      void
-     */
-    function setVersion(string $version) : void;
+
 
 
 
@@ -174,7 +167,7 @@ interface iDomain
      * @throws      \InvalidArgumentException
      *              Caso seja definido um valor inválido.
      */
-    function setDefaultApp(string $defaultApp = "") : void;
+    function setDefaultApp(string $defaultApp) : void;
 
 
 
@@ -189,6 +182,7 @@ interface iDomain
      *
      * @param       string $dateTimeLocal
      *              Timezone que será definido.
+     *              [Lista de fusos horários suportados](http://php.net/manual/en/timezones.php)
      *
      * @return      void
      */
@@ -312,7 +306,7 @@ interface iDomain
      *
      * @return      void
      */
-    function defineTargetApplication(string $uriRelativePath) : void;
+    function defineTargetApplicationName(string $uriRelativePath) : void;
     /**
      * Retorna o nome da aplicação que deve responder a requisição ``HTTP`` atual.
      *
@@ -358,5 +352,5 @@ interface iDomain
      *              Caso alguma propriedade obrigatória não tenha sido definida ou seja um valor
      *              inválido.
      */
-    function setPHPDomainConfiguration() : void;
+    function setPHPConfiguration() : void;
 }
