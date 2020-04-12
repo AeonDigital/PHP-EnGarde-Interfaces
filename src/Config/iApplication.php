@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
-use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
+use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurityConfig;
 
 
 
@@ -35,15 +35,6 @@ interface iApplication
      * @return      string
      */
     function getName() : string;
-    /**
-     * Define o nome da aplicação.
-     *
-     * @param       string $name
-     *              Nome da aplicação.
-     *
-     * @return      void
-     */
-    function setName(string $name) : void;
 
 
 
@@ -358,7 +349,7 @@ interface iApplication
      *
      * Neste momento da configuração apenas as seguintes propriedades podem ser definidas:
      *
-     * - setApplication     | - setAcceptMimes
+     * - setApplication     | - setAcceptMimes      | - setResponseHeaders
      * - setIsUseXHTML      | - setMiddlewares
      * - setDescription     | - setIsSecure
      * - setIsUseCache      | - setCacheTimeout
@@ -408,20 +399,12 @@ interface iApplication
 
 
     /**
-     * Retorna as configurações de segurança da aplicação.
+     * Retorna as configurações de segurança da aplicação se estas forem definidas.
      *
-     * @return      ?iSecurity
+     * @return      ?iSecurityConfig
      */
-    function getSecuritySettings() : ?iSecurity;
-    /**
-     * Define as configurações de segurança para a aplicação.
-     *
-     * @param       ?iSecurity $securitySettings
-     *              Instância das configurações de segurança que será definida para a aplicação.
-     *
-     * @return      void
-     */
-    function setSecuritySettings(?iSecurity $securitySettings) : void;
+    function getSecurityConfig() : ?iSecurityConfig;
+
 
 
 
