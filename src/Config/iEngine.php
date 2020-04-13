@@ -364,10 +364,4 @@ interface iEngine
      * @return      iApplication
      */
     function getApplicationConfig() : iApplication;
-    /**
-     * Inicia a instância ``Config\iApplication`` a ser usada.
-     *
-     * @return      void
-     */
-    function initiApplicationConfig() : void;
 }

@@ -5,8 +5,8 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 
 use AeonDigital\Interfaces\Http\iFactory as iFactory;
 use AeonDigital\EnGarde\Interfaces\Config\iEngine as iEngine;
+use AeonDigital\EnGarde\Interfaces\Engine\iApplication as iApplication;
 use AeonDigital\Interfaces\Http\Message\iServerRequest as iServerRequest;
-
 
 
 
@@ -244,7 +244,30 @@ interface iServer
     /**
      * Retorna a instância ``iServerRequest`` a ser usada.
      *
-     * @return iServerRequest
+     * @return      iServerRequest
      */
     function getServerRequest() : iServerRequest;
+    /**
+     * Retorna a instância ``Engine\Application`` referente à aplicação
+     * que deve ser executada.
+     *
+     * @return      iApplication
+     */
+    function getApplication() : iApplication;
+
+
+
+    /**
+     * Efetua as configurações necessárias para os manipuladores de exceptions e errors
+     * para as aplicações do domínio.
+     *
+     * @return      void
+     */
+    function setErrorListening() : void;
+    /**
+     * Inicia uma nova instância ``Config\iServer`` a partir dos dados da requisição atual.
+     *
+     * @return      iServer
+     */
+    static function autoSetServerConfig() : iServer;
 }
