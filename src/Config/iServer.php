@@ -257,6 +257,8 @@ interface iServer
 
 
 
+
+
     /**
      * Efetua as configurações necessárias para os manipuladores de exceptions e errors
      * para as aplicações do domínio.
