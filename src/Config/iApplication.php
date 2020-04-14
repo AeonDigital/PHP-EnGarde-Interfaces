@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
-use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
+
 
 
 
@@ -398,17 +398,6 @@ interface iApplication
 
 
 
-
-
-
-
-
-    /**
-     * Retorna a instância ``Config\iSecurity`` a ser usada.
-     *
-     * @return      ?iSecurity
-     */
-    function getSecurityConfig() : ?iSecurity;
 
 
 
