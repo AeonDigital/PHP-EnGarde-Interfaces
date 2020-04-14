@@ -526,21 +526,30 @@ interface iServer
     /**
      * Retorna a instância ``Config\iApplication``.
      *
+     * @param       array $config
+     *              Array associativo contendo as configurações para esta instância.
+     *
      * @return      iApplication
      */
-    function getApplicationConfig() : iApplication;
+    function getApplicationConfig(array $config = []) : iApplication;
     /**
      * Retorna a instância ``Config\iSecurity`` a ser usada.
      *
+     * @param       array $config
+     *              Array associativo contendo as configurações para esta instância.
+     *
      * @return      ?iSecurity
      */
-    function getSecurityConfig() : ?iSecurity;
+    function getSecurityConfig(array $config = []) : ?iSecurity;
     /**
      * Retorna a instância ``Config\iRoute`` a ser usada.
      *
+     * @param       array $config
+     *              Array associativo contendo as configurações para esta instância.
+     *
      * @return      ?iRoute
      */
-    function getRouteConfig() : ?iRoute;
+    function getRouteConfig(array $config = []) : ?iRoute;
 
 
 
@@ -568,5 +577,5 @@ interface iServer
      *
      * @return      iServer
      */
-    static function fromCurrentRequest() : iServer;
+    static function fromContext() : iServer;
 }
