@@ -247,13 +247,6 @@ interface iServer
      * @return      iServerRequest
      */
     function getServerRequest() : iServerRequest;
-    /**
-     * Retorna a instância ``Engine\Application`` referente à aplicação
-     * que deve ser executada.
-     *
-     * @return      iApplication
-     */
-    function getApplication() : iApplication;
 
 
 

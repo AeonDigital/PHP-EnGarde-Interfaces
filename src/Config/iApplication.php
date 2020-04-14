@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace AeonDigital\EnGarde\Interfaces\Config;
 
 use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
-use AeonDigital\EnGarde\Interfaces\Engine\iRouter as iRouter;
+
 
 
 
@@ -398,23 +398,17 @@ interface iApplication
 
 
 
+
+
+
+
+
     /**
-     * Retorna as configurações de segurança da aplicação se estas forem definidas.
+     * Retorna a instância ``Config\iSecurity`` a ser usada.
      *
      * @return      ?iSecurity
      */
     function getSecurityConfig() : ?iSecurity;
-    /**
-     * Retorna a instância ``iRouter`` a ser usada.
-     *
-     * @return      iRouter
-     */
-    function getRouter() : iRouter;
-
-
-
-
-
 
 
 
