@@ -167,6 +167,8 @@ interface iSecurity
 
 
 
+
+
     /**
      * Retorna uma instância configurada a partir de um array que contenha
      * as chaves correlacionadas a cada propriedade aqui definida.

@@ -512,6 +512,28 @@ interface iServer
 
 
     /**
+     * Efetua as configurações necessárias para os manipuladores de exceptions e errors
+     * para as aplicações do domínio.
+     *
+     * @return      void
+     */
+    function setErrorListening() : void;
+    /**
+     * Efetua configurações para o ``PHP`` conforme as propriedades definidas para esta classe.
+     *
+     * Esta ação só tem efeito na primeira vez que é executada.
+     *
+     * @throws      \RunTimeException
+     *              Caso alguma propriedade obrigatória não tenha sido definida ou seja um valor
+     *              inválido.
+     */
+    function setPHPConfiguration() : void;
+
+
+
+
+
+    /**
      * Retorna um objeto ``iFactory``.
      *
      * @return      iFactory
@@ -556,26 +578,12 @@ interface iServer
 
 
     /**
-     * Efetua configurações para o ``PHP`` conforme as propriedades definidas para esta classe.
+     * Inicia uma nova instância ``Config\iServer``.
      *
-     * Esta ação só tem efeito na primeira vez que é executada.
-     *
-     * @throws      \RunTimeException
-     *              Caso alguma propriedade obrigatória não tenha sido definida ou seja um valor
-     *              inválido.
-     */
-    function setPHPConfiguration() : void;
-    /**
-     * Efetua as configurações necessárias para os manipuladores de exceptions e errors
-     * para as aplicações do domínio.
-     *
-     * @return      void
-     */
-    function setErrorListening() : void;
-    /**
-     * Inicia uma nova instância ``Config\iServer`` a partir dos dados da requisição atual.
+     * @param       array $config
+     *              Array associativo contendo as configurações para esta instância.
      *
      * @return      iServer
      */
-    static function fromContext() : iServer;
+    static function fromArray(array $config) : iServer;
 }
