@@ -48,41 +48,16 @@ interface iServer
 
 
 
+
+
     /**
      * Resgata um array associativo contendo todas as variáveis definidas para o servidor no
-     * momento atual.
+     * momento atual. Normalmente retorna o conteúdo de ``$_SERVER``.
      *
      * @return      array
      *              Será retornado ``[]`` caso nada tenha sido definido.
      */
     function getServerVariables() : array;
-    /**
-     * Permite definir a coleção de valores das variáveis do servidor que estão atualmente
-     * definidas.
-     *
-     * Este método apenas pode ser efetivo se for em um ambiente de testes.
-     * Num ambiente de produção estes valores devem ser definidos automaticamente pelo construtor
-     * da classe.
-     *
-     * @param       array $oServer
-     *              Array associativo com as variáveis do servidor.
-     *
-     * @return      void
-     */
-    function setServerVariables(array $oServer) : void;
-
-
-
-    /**
-     * Retorna o endereço completo do diretório onde o domínio está sendo executado.
-     * Normalmente este valor vem de ``$_SERVER`` mas ele pode também ser alterado e definido
-     * diretamente através do método ``setRootPath``.
-     *
-     * @return      string
-     */
-    function getRootPath() : string;
-
-
 
 
 
@@ -192,8 +167,6 @@ interface iServer
 
 
 
-
-
     /**
      * Retorna o ``IP`` do usuário que está no momento visitando o site.
      * Um valor vazio em retorno indica que não foi possível identificar o ``IP``.
@@ -201,8 +174,6 @@ interface iServer
      * @return      string
      */
     function getClientIP() : string;
-
-
 
 
 
@@ -222,6 +193,15 @@ interface iServer
 
 
 
+
+
+
+    /**
+     * Retorna o endereço completo do diretório onde o domínio está sendo executado.
+     *
+     * @return      string
+     */
+    function getRootPath() : string;
 
 
 

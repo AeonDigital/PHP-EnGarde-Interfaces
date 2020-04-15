@@ -15,8 +15,6 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 /**
  * Nesta interface estão as configurações básicas para o funcionamento de uma Aplicação.
  *
- * Todas as propriedades aqui descritas não devem poder ser alteradas após serem definidas.
- *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
  * @copyright   2020, Rianna Cantarelli
