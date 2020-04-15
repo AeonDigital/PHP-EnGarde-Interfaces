@@ -17,9 +17,6 @@ use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
  * Interface para uma classe que representa a coleção de configurações do servidor no momento
  * em que a requisição ``HTTP`` é recebida.
  *
- * Normalmente servirá como um wrapper para os valores da variável ``$_SERVER``.
- * As propriedades que podem ser definidas (set) não devem poder ser sobrescritas.
- *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
  * @copyright   2020, Rianna Cantarelli
@@ -84,18 +81,6 @@ interface iServer
      * @return      string
      */
     function getRootPath() : string;
-    /**
-     * Define o local onde o domínio está sendo executado.
-     *
-     * @param       string $rootPath
-     *              Endereço completo do diretório.
-     *
-     * @return      void
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso o caminho indicado seja inválido
-     */
-    function setRootPath(string $rootPath) : void;
 
 
 
@@ -254,15 +239,6 @@ interface iServer
      * @return      string
      */
     function getEnvironmentType() : string;
-    /**
-     * Define o tipo de ambiente que o domínio está rodando no momento
-     *
-     * @param       string $environmentType
-     *              Tipo de ambiente.
-     *
-     * @return      void
-     */
-    function setEnvironmentType(string $environmentType) : void;
 
 
 
@@ -272,15 +248,6 @@ interface iServer
      * @return      bool
      */
     function getIsDebugMode() : bool;
-    /**
-     * Define configuração para o modo de debug.
-     *
-     * @param       bool $isDebugMode
-     *              Indique ``true`` se o domínio estiver em modo de debug.
-     *
-     * @return      void
-     */
-    function setIsDebugMode(bool $isDebugMode) : void;
 
 
 
@@ -290,16 +257,6 @@ interface iServer
      * @return      bool
      */
     function getIsUpdateRoutes() : bool;
-    /**
-     * Define configuração que indica para a aplicação algo que ela deve atualizar suas
-     * respectivas rotas.
-     *
-     * @param       bool $isUpdateRoutes
-     *              Indique ``true`` se for para a aplicação alvo atualizar suas rotas.
-     *
-     * @return      void
-     */
-    function setIsUpdateRoutes(bool $isUpdateRoutes) : void;
 
 
 
@@ -309,20 +266,6 @@ interface iServer
      * @return      array
      */
     function getHostedApps() : array;
-    /**
-     * Define a coleção de nomes das aplicações instaladas no domínio.
-     *
-     * @param       array $hostedApps
-     *              Array contendo o nome de cada uma das aplicações do domínio. Cada uma delas
-     *              precisa necessariamente corresponder ao nome de um diretório que fique na
-     *              raiz do domínio.
-     *
-     * @return      void
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso seja definido um valor inválido.
-     */
-    function setHostedApps(array $hostedApps) : void;
 
 
 
@@ -332,21 +275,6 @@ interface iServer
      * @return      string
      */
     function getDefaultApp() : string;
-    /**
-     * Define a aplicação padrão para o domínio.
-     * A aplicação apontada precisa estar definida em ``hostedApps``.
-     *
-     * @param       string $defaultApp
-     *              Nome da aplicação que será a padrão.
-     *              Caso ``''`` será definida a primeira aplicação definida em
-     *              ``hostedApps``.
-     *
-     * @return      void
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso seja definido um valor inválido.
-     */
-    function setDefaultApp(string $defaultApp) : void;
 
 
 
@@ -356,16 +284,6 @@ interface iServer
      * @return      string
      */
     function getDateTimeLocal() : string;
-    /**
-     * Define o timezone do domínio.
-     *
-     * @param       string $dateTimeLocal
-     *              Timezone que será definido.
-     *              [Lista de fusos horários suportados](http://php.net/manual/en/timezones.php)
-     *
-     * @return      void
-     */
-    function setDateTimeLocal(string $dateTimeLocal) : void;
 
 
 
@@ -375,15 +293,6 @@ interface iServer
      * @return      int
      */
     function getTimeOut() : int;
-    /**
-     * Define o tempo máximo (em segundos) para a execução das requisições.
-     *
-     * @param       int $timeOut
-     *              Timeout que será definido.
-     *
-     * @return      void
-     */
-    function setTimeOut(int $timeOut) : void;
 
 
 
@@ -393,15 +302,6 @@ interface iServer
      * @return      int
      */
     function getMaxFileSize() : int;
-    /**
-     * Define o valor máximo (em Mb) para o upload de um arquivo.
-     *
-     * @param       int $maxFileSize
-     *              Tamanho máximo (em Mb).
-     *
-     * @return      void
-     */
-    function setMaxFileSize(int $maxFileSize) : void;
 
 
 
@@ -411,15 +311,6 @@ interface iServer
      * @return      int
      */
     function getMaxPostSize() : int;
-    /**
-     * Define o valor máximo (em Mb) para a postagem de dados.
-     *
-     * @param       int $maxPostSize
-     *              Tamanho máximo (em Mb).
-     *
-     * @return      void
-     */
-    function setMaxPostSize(int $maxPostSize) : void;
 
 
 
@@ -437,18 +328,6 @@ interface iServer
      * @return      string
      */
     function getFullPathToErrorView() : string;
-    /**
-     * Define o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de erros no
-     * domínio.
-     *
-     * O caminho deve ser definido a partir do diretório raiz do domínio.
-     *
-     * @param       string $pathToErrorView
-     *              Caminho até a view de erro padrão.
-     *
-     * @return      void
-     */
-    function setPathToErrorView(string $pathToErrorView) : void;
 
 
 
@@ -458,15 +337,6 @@ interface iServer
      * @return      string
      */
     function getApplicationClassName() : string;
-    /**
-     * Define o nome da classe responsável por iniciar a aplicação.
-     *
-     * @param       string $applicationClassName
-     *              Nome da classe.
-     *
-     * @return      void
-     */
-    function setApplicationClassName(string $applicationClassName) : void;
 
 
 
@@ -482,14 +352,14 @@ interface iServer
      *
      * @return      bool
      */
-    function isApplicationNameOmitted() : bool;
+    function getIsApplicationNameOmitted() : bool;
     /**
      * Retorna o nome completo da classe da aplicação que deve ser instanciada para responder
      * a requisição atual.
      *
      * @return      string
      */
-    function retrieveApplicationNS() : string;
+    function getApplicationNamespace() : string;
 
 
 
