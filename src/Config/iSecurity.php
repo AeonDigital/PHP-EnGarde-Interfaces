@@ -35,7 +35,7 @@ interface iSecurity
      *
      * @return      bool
      */
-    function isActive() : bool;
+    function getIsActive() : bool;
 
 
 
