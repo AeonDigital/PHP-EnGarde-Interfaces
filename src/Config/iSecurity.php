@@ -113,7 +113,7 @@ interface iSecurity
      *
      * @return      bool
      */
-    function isSessionRenew() : bool;
+    function getIsSessionRenew() : bool;
 
 
 
