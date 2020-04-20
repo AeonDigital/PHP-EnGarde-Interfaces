@@ -325,7 +325,7 @@ interface iRoute
     function negotiateMimeType(
         ?array $requestMimes,
         ?string $forceMime
-    ) : array;
+    ) : bool;
 
 
 
