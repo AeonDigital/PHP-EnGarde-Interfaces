@@ -60,17 +60,32 @@ interface iRoute
      */
     function getAction() : string;
     /**
-     * Retorna o método ``HTTP`` que deve ser usado para evocar esta rota.
-     *
-     * @return      string
-     */
-    function getMethod() : string;
-    /**
      * Retorna os métodos ``HTTP`` que podem ser usados para esta mesma rota.
      *
      * @return      array
      */
     function getAllowedMethods() : array;
+    /**
+     * Retorna um array associativo contendo a coleção de mimetypes que esta rota é capaz de
+     * devolver como resposta.
+     *
+     * Esperado array associativo onde as chaves devem ser os valores abreviados (mime) e os
+     * valores correspondem ao nome completo do (mimetype).
+     *
+     * Ex:
+     * ```
+     *  [ "txt" => "text/plain", "xhtml" => "application/xhtml+xml" ]
+     * ```
+     *
+     * @return      array
+     */
+    function getAllowedMimeTypes() : array;
+    /**
+     * Retorna o método ``HTTP`` que está sendo usado para evocar esta rota.
+     *
+     * @return      string
+     */
+    function getMethod() : string;
     /**
      * Retorna a rota que está sendo resolvida e seus respectivos aliases.
      * As rotas devem sempre ser definidas de forma relativa à raiz (começando com "/").
@@ -79,25 +94,7 @@ interface iRoute
      */
     function getRoutes() : array;
     /**
-     * Retorna um array associativo contendo a coleção de mimetypes que esta rota é capaz de
-     * devolver como resposta.
-     *
-     * Esperado um array simples contendo unicamente a versão ``abreviada`` de
-     * um mime (como ``txt``) ou usando um array associativo onde as chaves devem ser os valores
-     * abreviados e os valores correspondem ao nome completo do mimetype
-     *
-     * Ex:
-     * ```
-     *  [ "txt", "xhtml" ]
-     *   ou
-     *  [ "txt" => "text/plain", "xhtml" => "application/xhtml+xml" ]
-     * ```
-     *
-     * @return      array
-     */
-    function getAcceptMimes() : array;
-    /**
-     * Retorna ``true`` caso aplicação deve priorizar o uso do mime ``xhtml``.
+     * Retorna ``true`` caso aplicação deve priorizar o uso do mime ``xhtml`` sobre o ``html``.
      *
      * @return      bool
      */
@@ -109,6 +106,13 @@ interface iRoute
      * @return      string
      */
     function getRunMethodName() : string;
+    /**
+     * Resgata um array associativo contendo propriedades customizadas para o processamento
+     * da rota.
+     *
+     * @return      array
+     */
+    function getCustomProperties() : array;
 
 
 
@@ -182,7 +186,7 @@ interface iRoute
     // SUB-SISTEMA: SEGURANÇA
 
     /**
-     * Retorna ``true`` se a rota dese ser protegida pelo sistema de segurança da aplicação.
+     * Retorna ``true`` se a rota deve ser protegida pelo sistema de segurança da aplicação.
      *
      * Uma rota definida como segura DEVE ter o sistema de cache desabilitado.
      *
@@ -198,8 +202,9 @@ interface iRoute
     /**
      * Retorna ``true`` se a rota possui um conteúdo cacheável.
      *
-     * Esta característica só é válida para respostas obtidas com os métodos HTTP ``HEAD`` e ``GET``.
-     * Uma rota definida como segura terá o sistema de cache desabilitado.
+     * Apenas retornará ``true`` se, alem de definido assim a propriedade ``cacheTimeout`` for
+     * maior que zero, ``isSecure`` for ``false`` e o método que está sendo usado para responder
+     * ao ``UA`` for ``HEAD`` ou ``GET``.
      *
      * @return      bool
      */
@@ -225,6 +230,12 @@ interface iRoute
     // efetivamente executar a rota.
 
     /**
+     * Retorna o Locale a ser usado para resolver esta rota.
+     *
+     * @return      string
+     */
+    function getResponseLocale() : string;
+    /**
      * Retorna o Mime (extenção) a ser usado para resolver esta rota.
      *
      * @return      string
@@ -236,12 +247,6 @@ interface iRoute
      * @return      string
      */
     function getResponseMimeType() : string;
-    /**
-     * Retorna o Locale a ser usado para resolver esta rota.
-     *
-     * @return      string
-     */
-    function getResponseLocale() : string;
     /**
      * Quando ``true`` indica que o código de retorno deve passar por algum tratamento que
      * facilite a leitura do mesmo por humanos.
@@ -263,6 +268,11 @@ interface iRoute
      * Processa a negociação de conteúdo para identificar qual locale deve ser usado para
      * responder a esta rota.
      *
+     * Esta ação deve ser executada ANTES do processamento da rota para que tal resultado
+     * seja conhecido durante sua execução.
+     *
+     * Irá preencher o valor que deve ser retornado em ``$this->getResponseLocale()``.
+     *
      * @param       ?array $requestLocales
      *              Coleção de Locales que o ``UA`` explicitou preferência.
      *
@@ -279,7 +289,8 @@ interface iRoute
      *              Locale que terá prioridade sobre os demais podendo inclusive ser um que a
      *              aplicação não esteja apta a servir.
      *
-     * @return      string
+     * @return      bool
+     *              Retorna ``true`` caso tenha sido possível identificar o locale a ser usado.
      */
     function negotiateLocale(
         ?array $requestLocales,
@@ -287,13 +298,19 @@ interface iRoute
         ?array $applicationLocales,
         ?string $defaultLocale,
         ?string $forceLocale
-    ) : string;
+    ) : bool;
 
 
 
     /**
      * Processa a negociação de conteúdo para identificar qual mimetype deve ser usado para
      * responder a esta rota.
+     *
+     * Esta ação deve ser executada ANTES do processamento da rota para que tal resultado
+     * seja conhecido durante sua execução.
+     *
+     * Irá preencher os valores que devem ser retornados nos métodos ``$this->getResponseMime()``
+     * e ``$this->getResponseMimeType()``.
      *
      * @param       ?array $requestMimes
      *              Coleção de mimeTypes que o ``UA`` explicitou preferência.
@@ -302,14 +319,8 @@ interface iRoute
      *              Mime que terá prioridade sobre os demais podendo inclusive ser um que a rota
      *              não esteja apta a utilizar.
      *
-     * @return      array
-     * ``` php
-     *  $arr = [
-     *      "valid"     bool    Indica se o mimetype encontrado é válido para ser usado em um response
-     *      "mime"      string  Extenção que identifica o tipo de documento referente ao mimetype selecionado.
-     *      "mimetype"  string  Nome canonico do mimetype selecionado.
-     *  ];
-     * ```
+     * @return      bool
+     *              Retorna ``true`` caso tenha sido possível identificar o mimetype a ser usado.
      */
     function negotiateMimeType(
         ?array $requestMimes,
@@ -334,12 +345,12 @@ interface iRoute
     /**
      * Define o nome do documento que deve ser devolvido ao efetuar o download da rota.
      *
-     * @param       string $downloadFileName
+     * @param       string $responseDownloadFileName
      *              Nome do arquivo que será enviado ao UA como um download.
      *
      * @return      void
      */
-    function setResponseDownloadFileName(string $downloadFileName) : void;
+    function setResponseDownloadFileName(string $responseDownloadFileName) : void;
 
 
 
@@ -543,30 +554,8 @@ interface iRoute
      *              Caminho relativo até o arquivo de legendas.
      *
      * @return      void
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso seja definido um valor inválido.
      */
     function setLocaleDictionary(string $localeDictionary) : void;
-
-
-
-    /**
-     * Resgata um array associativo contendo propriedades customizadas para o processamento
-     * da rota.
-     *
-     * @return      array
-     */
-    function getCustomProperties() : array;
-    /**
-     * Define uma coleção de propriedades customizadas para o processamento da rota.
-     *
-     * @param       array $customProperties
-     *              Array associativo contendo as informações customizadas.
-     *
-     * @return      void
-     */
-    function setCustomProperties(array $customProperties) : void;
 
 
 
