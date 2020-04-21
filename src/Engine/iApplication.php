@@ -13,7 +13,8 @@ namespace AeonDigital\EnGarde\Interfaces\Engine;
 
 
 /**
- * Define uma Aplicação que pode ser manipulada pelo Gerenciador de Domínio.
+ * Define uma Aplicação que terá como responsabilidade servir ao ``UA`` a rota
+ * que ele está requisitando.
  *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>

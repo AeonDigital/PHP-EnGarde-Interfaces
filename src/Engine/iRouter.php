@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Engine;
 
-
+use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
 
 
 
@@ -13,8 +13,9 @@ namespace AeonDigital\EnGarde\Interfaces\Engine;
 
 
 /**
- * Interface para uma classe que efetue o trabalho de rotear as URLs entre os controllers e
- * actions de uma Aplicação.
+ * Interface para um roteador.
+ * Um roteador tem o trabalho de pré-processar todas as rotas configuradas para uma aplicação
+ * além de identificar, a partir da URL requisitada, qual exatamente está sendo requerida.
  *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
@@ -29,99 +30,49 @@ interface iRouter
 
 
     /**
-     * Define o valores padrões para as configurações de rotas de uma aplicação.
+     * Deve verificar quando a aplicação possui alterações que envolvam a necessidade de efetuar
+     * uma atualização nos dados pré-processados.
      *
-     * @param       array $defaultRouteConfig
-     *              Configurações padrões para as rotas da aplicação.
+     * Idealmente verificará se os controllers da aplicação possuem alguma alteração posterior
+     * a data do último pré-processamento, e, estando o sistema configurado para atualizar
+     * automaticamente as rotas, então deverá retornar ``true``.
      *
-     * @return      void
-     */
-    function setDefaultRouteConfig(array $defaultRouteConfig) : void;
-
-
-
-    /**
-     * Indica se é permitido efetuar a atualização do arquivo de rotas da aplicação.
-     *
-     * @param       bool $isUpdateRoutes
-     *              Quando ``true`` irá permitir a atualização do arquivo de rotas.
-     *
-     * @return      void
-     */
-    function setIsUpdateRoutes(bool $isUpdateRoutes) : void;
-
-
-
-    /**
-     * Quando executado este método irá excluir o atual arquivo de configuração de rotas da
-     * aplicação, forçando assim que ele seja refeito.
-     *
-     * @return      void
-     */
-    function forceUpdateRoutes() : void;
-
-
-
-    /**
-     * Retornará ``true`` quando for identificado que é para redefinir o arquivo de configuração
-     * de rotas da aplicação.
-     *
-     * Apenas retornará ``true`` quando:
-     * - for  definido ``true`` em ``setIsUpdateRoutes``.
-     * - há algum arquivo ``controller`` com data de alteração posterior a data de criação do
-     *   arquivo de configuração de rotas da aplicação.
-     *
-     * Também retornará ``true`` quando não existir um arquivo de rotas no local indicado.
+     * Também deve retornar ``true`` quando, por qualquer motivo definido na implementação, o
+     * pré-processamento anterior não existir ou for considerado como desatualizado.
      *
      * @return      bool
      */
-    function checkForUpdateApplicationRoutes() : bool;
+    function checkForApplicationUpdateRoutes() : bool;
 
 
 
     /**
-     * Varre os arquivos de ``controllers`` da aplicação e remonta o arquivo de configuração de
-     * rotas do mesmo.
-     *
-     * Este método apenas pode ser executado quando o resultado de
-     * ``checkForUpdateApplicationRoutes`` for ``true``.
+     * Varre os arquivos de ``controllers`` da aplicação e efetua o pré-processamento das mesmas.
+     * Idealmente o resultado deve ser um arquivo de configuração contendo todos os dados necessários
+     * para a execução de cada rota de forma individual.
      *
      * @return      void
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso algum parametro interno esteja com um valor inválido.
      *
      * @throws      \RuntimeException
      *              Caso algum erro ocorra no processo.
      */
-    function updateApplicationRoutes() : void;
+    function preProcessApplicationRoutes() : void;
 
 
 
     /**
-     * Identifica se a rota passada correspondem a alguma rota que tenha sido previamente
-     * registrada no ``AppRoutes``.
-     * Uma vez identificada a rota alvo, retorna todas suas configurações.
+     * Identifica se a rota passada corresponde a alguma das rotas configuradas para a
+     * aplicação e retorna um objeto ``iRoute`` com os dados correspondentes.
      *
      * Em caso de falha na identificação da rota será retornado ``null``.
      *
      * @param       string $targetRoute
      *              Porção relativa da ``URI`` que está sendo executada.
      *              É necessário constar na rota, como sua primeira parte, o nome da aplicação
-     *              que está sendo executada. Não deve constar quaisquer parametros ``querystring``
-     *              ou ``fragment``.
+     *              que está sendo executada.
+     *              Não deve constar quaisquer parametros ``querystring`` ou ``fragment``.
      *
-     * @return      ?array
+     * @return      ?iRoute
      */
-    function selectTargetRawRoute(string $targetRoute) : ?array;
-
-
-
-    /**
-     * Retorna a coleção de parametros identificados na ``URL`` passada por último no método
-     * ``selectTargetRawRoute``.
-     *
-     * @return      ?array
-     */
-    function getSelectedRouteParans() : ?array;
+    function selectTargetRawRoute(string $targetRoute) : ?iRoute;
 }
