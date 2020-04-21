@@ -5,7 +5,7 @@ namespace AeonDigital\EnGarde\Interfaces\Config;
 
 use AeonDigital\Interfaces\Http\iFactory as iFactory;
 use AeonDigital\Interfaces\Http\Message\iServerRequest as iServerRequest;
-use AeonDigital\EnGarde\Interfaces\Engine\iApplication as iApplication;
+use AeonDigital\EnGarde\Interfaces\Config\iApplication as iApplication;
 use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
 use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
 
