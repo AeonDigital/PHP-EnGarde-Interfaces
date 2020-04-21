@@ -583,19 +583,6 @@ interface iRoute
      */
     static function fromArray(array $config) : iRoute;
     /**
-     * Retorna uma instância configurada a partir de uma uma string estruturada de forma a
-     * receber os valores mínimos a serem usados para as definições de uma rota.
-     *
-     * @param       string $config
-     *              String estruturada.
-     *
-     * @return      iRoute
-     *
-     * @throws      \InvalidArgumentException
-     *              Caso seja definido um valor inválido.
-     */
-    static function fromString(string $config) : iRoute;
-    /**
      * Converte as propriedades definidas neste objeto para um ``array associativo``.
      *
      * @return      array
