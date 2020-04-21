@@ -208,13 +208,13 @@ interface iServer
     /**
      * Retorna o tipo de ambiente que o domínio está rodando no momento.
      *
-     * Valores comuns:
-     *  - "production"  :   Indica que trata-se de um ambiente de produção.
-     *  - "development" :   Indica um ambiente de desenvolvimento e homologação.
-     *  - "local"       :   Trata-se de um ambiente local; Máquina local de um programador.
-     *  - "test"        :   Quando estiver efetuando testes unitários.
-     *  - "testview"    :   Para testes unitários que efetuam validação de retorno de Views.
-     *  - "localtest"   :   Deve funcionar tal qual "local" mas indica uma configuração para testes unitários.
+     * Valores Esperados:
+     *  - ``PRD``   : Production
+     *  - ``HML``   : Homolog
+     *  - ``QA``    : Quality Assurance
+     *  - ``DEV``   : Development
+     *  - ``LCL``   : Local
+     *  - ``UTEST`` : Unit Test
      *
      * @return      string
      */
@@ -232,7 +232,8 @@ interface iServer
 
 
     /**
-     * Retorna ``true`` se for para a aplicação alvo atualizar suas respectivas rotas.
+     * Retorna ``true`` se for para as aplicações atualizar suas
+     * respectivas configurações de rotas.
      *
      * @return      bool
      */
@@ -272,7 +273,7 @@ interface iServer
      *
      * @return      int
      */
-    function getTimeOut() : int;
+    function getTimeout() : int;
 
 
 

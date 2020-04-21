@@ -31,14 +31,14 @@ interface iRouter
 
     /**
      * Deve verificar quando a aplicação possui alterações que envolvam a necessidade de efetuar
-     * uma atualização nos dados pré-processados.
+     * uma atualização nos dados das rotas.
      *
      * Idealmente verificará se os controllers da aplicação possuem alguma alteração posterior
-     * a data do último pré-processamento, e, estando o sistema configurado para atualizar
-     * automaticamente as rotas, então deverá retornar ``true``.
+     * a data do último processamento, e, estando o sistema configurado para atualizar
+     * automaticamente as rotas, deverá retornar ``true``.
      *
      * Também deve retornar ``true`` quando, por qualquer motivo definido na implementação, o
-     * pré-processamento anterior não existir ou for considerado como desatualizado.
+     * processamento anterior não existir ou for considerado como desatualizado.
      *
      * @return      bool
      */
@@ -47,7 +47,7 @@ interface iRouter
 
 
     /**
-     * Varre os arquivos de ``controllers`` da aplicação e efetua o pré-processamento das mesmas.
+     * Varre os arquivos de ``controllers`` da aplicação e efetua o processamento das mesmas.
      * Idealmente o resultado deve ser um arquivo de configuração contendo todos os dados necessários
      * para a execução de cada rota de forma individual.
      *
@@ -56,13 +56,13 @@ interface iRouter
      * @throws      \RuntimeException
      *              Caso algum erro ocorra no processo.
      */
-    function preProcessApplicationRoutes() : void;
+    function processApplicationRoutes() : void;
 
 
 
     /**
      * Identifica se a rota passada corresponde a alguma das rotas configuradas para a
-     * aplicação e retorna um objeto ``iRoute`` com os dados correspondentes.
+     * aplicação e retorna um array associativo contendo todos os dados correspondentes a mesma.
      *
      * Em caso de falha na identificação da rota será retornado ``null``.
      *
@@ -72,7 +72,7 @@ interface iRouter
      *              que está sendo executada.
      *              Não deve constar quaisquer parametros ``querystring`` ou ``fragment``.
      *
-     * @return      ?iRoute
+     * @return      ?array
      */
-    function selectTargetRawRoute(string $targetRoute) : ?iRoute;
+    function selectTargetRawRoute(string $targetRoute) : ?array;
 }
