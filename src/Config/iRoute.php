@@ -210,7 +210,7 @@ interface iRoute
      */
     function getIsUseCache() : bool;
     /**
-     * Retorna o tempo (em segundos) pelo qual o documento em cache deve ser armazenado até
+     * Retorna o tempo (em minutos) pelo qual o documento em cache deve ser armazenado até
      * expirar.
      *
      * Um valor igual a ``0`` indica que o armazenamento não deve ser feito (tal qual se o sistema
