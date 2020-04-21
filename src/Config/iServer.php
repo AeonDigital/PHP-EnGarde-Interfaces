@@ -295,19 +295,16 @@ interface iServer
 
 
     /**
-     * Resgata o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de erros no
-     * domínio.
+     * Resgata o caminho até a view que deve ser enviada ao ``UA`` em caso de
+     * erros no domínio.
+     *
+     * @param       bool $fullPath
+     *              Se ``false`` retornará o caminho relativo.
+     *              Quando ``true`` deverá retornar o caminho completo.
      *
      * @return      string
      */
-    function getPathToErrorView() : string;
-    /**
-     * Resgata o caminho completo até a view que deve ser enviada ao ``UA`` em caso de erros no
-     * domínio.
-     *
-     * @return      string
-     */
-    function getFullPathToErrorView() : string;
+    function getPathToErrorView(bool $fullPath = false) : string;
 
 
 

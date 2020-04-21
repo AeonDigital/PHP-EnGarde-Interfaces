@@ -42,7 +42,7 @@ interface iRouter
      *
      * @return      bool
      */
-    function checkForApplicationUpdateRoutes() : bool;
+    function isToProcessApplicationRoutes() : bool;
 
 
 
