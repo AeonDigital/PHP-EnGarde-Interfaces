@@ -426,9 +426,14 @@ interface iServer
      * @param       array $config
      *              Array associativo contendo as configurações para esta instância.
      *
+     * @param       bool $isRaw
+     *              Quando ``true`` indica que o parametro passado em ``$config`` possui as
+     *              informações necessárias para a criação do objeto ``iRoute``, no entanto
+     *              este precisa de algum tratamento especial antes da criação da instância.
+     *
      * @return      ?iRoute
      */
-    function getRouteConfig(array $config = []) : ?iRoute;
+    function getRouteConfig(array $config = [], bool $isRaw = false) : ?iRoute;
 
 
 
