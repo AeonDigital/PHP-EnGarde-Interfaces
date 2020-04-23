@@ -423,7 +423,7 @@ interface iServer
     /**
      * Retorna a instância ``Config\iRoute`` a ser usada.
      *
-     * @param       array $config
+     * @param       ?array $config
      *              Array associativo contendo as configurações para esta instância.
      *
      * @param       bool $isRaw
@@ -433,7 +433,7 @@ interface iServer
      *
      * @return      ?iRoute
      */
-    function getRouteConfig(array $config = [], bool $isRaw = false) : ?iRoute;
+    function getRouteConfig(?array $config = null, bool $isRaw = false) : ?iRoute;
 
 
 
