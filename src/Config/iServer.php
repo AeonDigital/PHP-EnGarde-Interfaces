@@ -110,14 +110,9 @@ interface iServer
      * Baseado nos dados da requisição que está sendo executada.
      * Retorna a parte ``path`` da ``URI`` que está sendo executada.
      *
-     * @param       bool $forceApplicationName
-     *              Quando ``true`` irá retornar o caminho contendo o nome da aplicação
-     *              identificada para ser executada, caso contrário retornará
-     *              o caminho correspondente ao que foi requisitado explicitamente pelo ``UA``.
-     *
      * @return      string
      */
-    function getRequestPath(bool $forceApplicationName = false) : string;
+    function getRequestPath() : string;
     /**
      * Baseado nos dados da requisição que está sendo executada.
      * Retorna a porta ``HTTP`` que está sendo evocada.
@@ -343,6 +338,15 @@ interface iServer
      * @return      string
      */
     function getApplicationNamespace() : string;
+    /**
+     * Retorna a URI que está sendo requisitada em ``nível de aplicação``, ou seja, irá SEMPRE
+     * adicionar o nome da aplicação que está sendo chamada na primeira partícula da URI caso
+     * ela esteja omitida.
+     * Não irá retornar usar qualquer querystring da requisição, apenas a parte ``path``.
+     *
+     * @return      string
+     */
+    function getApplicationRequestUri() : string;
 
 
 
