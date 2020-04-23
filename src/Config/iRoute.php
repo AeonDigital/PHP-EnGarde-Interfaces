@@ -54,6 +54,13 @@ interface iRoute
      */
     function getController() : string;
     /**
+     * Retorna a namespace completa do controller que deve responder a esta
+     * requisição.
+     *
+     * @return      string
+     */
+    function getControllerNamespace() : string;
+    /**
      * Retorna o nome da action que resolve a rota.
      *
      * @return      string
