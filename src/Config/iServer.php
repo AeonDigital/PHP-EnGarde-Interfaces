@@ -179,7 +179,18 @@ interface iServer
 
     /**
      * Resgata toda a coleção de informações passadas na requisição.
-     * Sejam parametros via querystrings ou dados postados atravéz de formulários.
+     *
+     * Concatena neste resultado as informações submetidas pelo UA.
+     * Em caso de colisão de chaves de valores a ordem de prioridade de prevalencia será:
+     *
+     * - requestRouteParans
+     *   Parametros nomeados na própria rota e identificados pelo processamento da mesma.
+     * - $_POST
+     *   Parametros passados por POST.
+     * - $_GET
+     *   Parametros passados por GET.
+     * - "php://input"
+     *   Dados obtidos do stream bruto.
      *
      * Não inclui valores passados via cookies.
      *
