@@ -445,7 +445,12 @@ interface iServer
      * @return      ?iRoute
      */
     function getRouteConfig(?array $config = null, bool $isRaw = false) : ?iRoute;
-
+    /**
+     * Retorna os dados brutos referentes a rota que está sendo executada no momento.
+     *
+     * @return      ?array
+     */
+    function getRawRouteConfig() : ?array;
 
 
 
