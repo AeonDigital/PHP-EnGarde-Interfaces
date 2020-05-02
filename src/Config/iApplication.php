@@ -223,6 +223,37 @@ interface iApplication
 
 
     /**
+     * Resgata um array associativo contendo a correlação entre os métodos HTTP
+     * e suas respectivas classes de resolução.
+     *
+     * Tais classes serão usadas exclusivamente para resolver os métodos HTTP que
+     * originalmente devem ser processados pelo framework.
+     *
+     * Originalmente estes:
+     * "HEAD", "OPTIONS", "TRACE", "DEV", "CONNECT"
+     *
+     * ```
+     * // ex:
+     * $arr = [
+     *  "HEAD"  => "full\\qualified\\namespace\\classnameHead",
+     *  "DEV"   => "full\\qualified\\namespace\\classnameDEV"
+     * ]
+     * ```
+     *
+     * @return      array
+     */
+    function getHTTPSubSystemNamespaces() : array;
+
+
+
+
+
+
+
+
+
+
+    /**
      * Inicia uma nova instância ``Config\iApplication``.
      *
      * @param       array $config
