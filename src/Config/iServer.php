@@ -376,6 +376,28 @@ interface iServer
 
 
 
+    /**
+     * Retorna a coleção de métodos HTTP que devem poder ser usados pelas actions.
+     * Ou seja, aqueles que os desenvolvedores terão acesso de configurar.
+     *
+     * Originalmente estes:
+     * "GET", "POST", "PUT", "PATCH", "DELETE"
+     *
+     * @return      array
+     */
+    function getDeveloperHTTPMethods() : array;
+    /**
+     * Retorna a coleção de métodos HTTP que devem poder ser controlados exclusivamente
+     * pelo próprio framework.
+     *
+     * Originalmente estes:
+     * "HEAD", "OPTIONS", "TRACE", "DEV", "CONNECT"
+     *
+     * @return      array
+     */
+    function getFrameworkHTTPMethods() : array;
+
+
 
 
 
@@ -451,30 +473,6 @@ interface iServer
      * @return      ?array
      */
     function getRawRouteConfig() : ?array;
-
-
-
-
-    /**
-     * Retorna a coleção de métodos HTTP que devem poder ser usados pelas actions.
-     * Ou seja, aqueles que os desenvolvedores terão acesso de configurar.
-     *
-     * Originalmente estes:
-     * "GET", "POST", "PUT", "PATCH", "DELETE"
-     *
-     * @return      array
-     */
-    function getDeveloperHTTPMethods() : array;
-    /**
-     * Retorna a coleção de métodos HTTP que devem poder ser controlados exclusivamente
-     * pelo próprio framework.
-     *
-     * Originalmente estes:
-     * "HEAD", "OPTIONS", "TRACE", "DEV", "CONNECT"
-     *
-     * @return      array
-     */
-    function getFrameworkHTTPMethods() : array;
 
 
 
