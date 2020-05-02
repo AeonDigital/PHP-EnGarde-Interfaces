@@ -464,7 +464,7 @@ interface iServer
      *
      * @return      array
      */
-    function developerHTTPMethods() : array;
+    function getDeveloperHTTPMethods() : array;
     /**
      * Retorna a coleção de métodos HTTP que devem poder ser controlados exclusivamente
      * pelo próprio framework.
@@ -474,7 +474,7 @@ interface iServer
      *
      * @return      array
      */
-    function frameworkHTTPMethods() : array;
+    function getFrameworkHTTPMethods() : array;
 
 
 
