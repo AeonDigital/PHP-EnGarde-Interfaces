@@ -456,6 +456,30 @@ interface iServer
 
 
     /**
+     * Retorna a coleção de métodos HTTP que devem poder ser usados pelas actions.
+     * Ou seja, aqueles que os desenvolvedores terão acesso de configurar.
+     *
+     * Originalmente estes:
+     * "GET", "POST", "PUT", "PATCH", "DELETE"
+     *
+     * @return      array
+     */
+    function developerHTTPMethods() : array;
+    /**
+     * Retorna a coleção de métodos HTTP que devem poder ser controlados exclusivamente
+     * pelo próprio framework.
+     *
+     * Originalmente estes:
+     * "HEAD", "OPTIONS", "TRACE", "DEV", "CONNECT"
+     *
+     * @return      array
+     */
+    function frameworkHTTPMethods() : array;
+
+
+
+
+    /**
      * Inicia uma nova instância ``Config\iServer``.
      *
      * @param       array $config
