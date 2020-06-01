@@ -181,6 +181,16 @@ interface iSecurity
      * @return      array
      */
     function getDeniedIPRanges() : array;
+    /**
+     * Identifia se o IP informado está dentro dos ranges definidos como válidos para o
+     * acesso a esta aplicação.
+     *
+     * @param       string $ip
+     *              IP que será testado.
+     *
+     * @return      bool
+     */
+    function isAllowedIP(string $ip) : bool;
 
 
 
