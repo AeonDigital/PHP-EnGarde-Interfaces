@@ -172,11 +172,19 @@ interface iSecurity
     /**
      * Retorna uma coleção de intervalos de IPs que tem permissão de acessar a aplicação.
      *
+     * Isto implica em dizer que a regra de segurança excluirá de acesso toda requisição que
+     * venha de um IP que não esteja na lista previamente definida.
+     * [tudo é proibido até que seja liberado]
+     *
      * @return      array
      */
     function getAllowedIPRanges() : array;
     /**
      * Retorna uma coleção de intervalos de IPs que estão bloqueados de acessar a aplicação.
+     *
+     * Isto implica em dizer que a regra de segurança permitirá o acesso de toda requisição que
+     * venha de um IP que não esteja na lista previamente definida.
+     * [tudo é permitido até que seja bloqueado]
      *
      * @return      array
      */
@@ -185,8 +193,14 @@ interface iSecurity
      * Identifia se o IP informado está dentro dos ranges definidos como válidos para o
      * acesso a esta aplicação.
      *
+     * As regras ``AllowedIPRanges`` e ``DeniedIPRanges`` são auto-excludentes, ou seja, apenas
+     * uma delas pode estar valendo e, na presença de ambos conjuntos existirem, a regra
+     * ``AllowedIPRanges`` (que é mais restritiva) é que prevalecerá para este teste.
+     *
+     * Se nenhuma das regras estiver definido, todas as requisições serão aceitas.
+     *
      * @param       string $ip
-     *              IP que será testado.
+     *              IP que será testado em seu formato ``human readable``.
      *
      * @return      bool
      */
