@@ -258,11 +258,15 @@ interface iSecurity
      * @param       string $password
      *              Senha de autenticação.
      *
+     * @param       string $fullPathToLocalData
+     *              Caminho completo até o diretório que armazena dados locais.
+     *              (deve ser usado apenas para casos onde sessionType = "local")
+     *
      * @return      bool
      *              Retornará ``true`` quando o login for realizado com
      *              sucesso e ``false`` quando falhar por qualquer motivo.
      */
-    function executeLogin(string $userName, string $password) : bool;
+    function executeLogin(string $userName, string $password, string $fullPathToLocalData = "") : bool;
     /**
      * Efetua o logout do usuário na aplicação e encerra sua sessão.
      *

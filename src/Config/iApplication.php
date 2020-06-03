@@ -131,6 +131,21 @@ interface iApplication
 
 
 
+    /**
+     * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório de armazenamento
+     * para os arquivos de dados que constituem uma *base de dados local*.
+     *
+     * O formato e conteúdo destes arquivos varia conforme a implementação realizada.
+     *
+     * @param       bool $fullPath
+     *              Se ``false`` retornará o caminho relativo.
+     *              Quando ``true`` deverá retornar o caminho completo.
+     *
+     * @return      string
+     */
+    function getPathToLocalData(bool $fullPath = false) : string;
+
+
 
 
 
