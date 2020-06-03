@@ -210,21 +210,7 @@ interface iSecurity
 
 
 
-    /**
-     * Retorna o código de autenticação para o UA.
-     *
-     * @return      string
-     */
-    function getAuthUserInfo() : string;
-    /**
-     * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
-     *
-     * O sistema deve procurar primeiro no cookie de segurança que, se definido deverá conter
-     * o ``username`` atualmente autorizado e um ``hash`` da sessão atual.
-     *
-     * @return      string
-     */
-    function getUserProfile() : string;
+
     /**
      * Retorna um array associativo contendo os nomes de perfils de usuário e
      * respectivas credenciais de acesso ao banco de dados.
@@ -244,6 +230,41 @@ interface iSecurity
      * @return      iDAL
      */
     function getDAL() : iDAL;
+
+
+
+
+
+    /**
+     * Verifica se a informação de autenticação passada corresponde a uma sessão
+     * reconhecida como ativa e válida para a requisição realizada pelo UA.
+     *
+     * Em caso afirmativo, carrega os dados do usuário autenticado.
+     *
+     * @param       string $authInfo
+     *
+     * @return      bool
+     */
+    function checkAuthenticationInformation(string $authInfo) : bool;
+    /**
+     * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
+     *
+     * @return      ?mixed
+     */
+    function getAuthenticatedUser();
+    /**
+     * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
+     *
+     * @return      string
+     */
+    function getUserProfile() : string;
+    /**
+     * Retorna uma coleção de perfis de segurança que o usuário atualmente reconhecido
+     * tem autorização de utilizar.
+     *
+     * @return      array
+     */
+    function getAllowedUserProfiles() : array;
 
 
 
