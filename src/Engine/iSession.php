@@ -25,6 +25,24 @@ interface iSession
 
 
     /**
+     * Permite definir o diretório onde os dados da aplicação estão armazenados.
+     *
+     * @param       string $pathToLocalData
+     *              Caminho completo até o diretório de dados.
+     *
+     * @return      void
+     */
+    function setPathToLocalData(string $pathToLocalData) : void;
+    /**
+     * Resgata o caminho completo até onde os dados da aplicação estão armazenados.
+     *
+     * @return      string
+     */
+    function getPathToLocalData() : string;
+
+
+
+    /**
      * Renova a sessão do usuário.
      *
      * @param       int $sessionTimeout
