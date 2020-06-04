@@ -46,6 +46,21 @@ interface iSession
 
 
     /**
+     * Retorna o status atual do login do UA.
+     *
+     * @return      string
+     */
+    function retrieveLoginStatus() : string;
+    /**
+     * Retorna o status atual da navegação do UA.
+     *
+     * @return      string
+     */
+    function retrieveBrowseStatus() : string;
+
+
+
+    /**
      * Permite definir o diretório onde os dados da aplicação estão armazenados.
      *
      * @param       string $pathToLocalData
