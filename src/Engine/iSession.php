@@ -25,6 +25,27 @@ interface iSession
 
 
     /**
+     * Retorna os dados de um usuário que esteja carregado no momento.
+     *
+     * @return      ?array
+     */
+    function retrieveUserData() : ?array;
+
+
+
+    /**
+     * Permite definir os dados existentes do cookie de segurança.
+     *
+     * @param       array $cookieData
+     *              Array associativo do cookie de segurança.
+     *
+     * @return      void
+     */
+    function setSecurityCookieData(array $securityCookieData) : void;
+
+
+
+    /**
      * Permite definir o diretório onde os dados da aplicação estão armazenados.
      *
      * @param       string $pathToLocalData
