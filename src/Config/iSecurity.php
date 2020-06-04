@@ -249,9 +249,9 @@ interface iSecurity
     /**
      * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
      *
-     * @return      ?mixed
+     * @return      ?array
      */
-    function getAuthenticatedUser();
+    function getAuthenticatedUser() : ?array;
     /**
      * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
      *
@@ -287,7 +287,37 @@ interface iSecurity
      *              Retornará ``true`` quando o login for realizado com
      *              sucesso e ``false`` quando falhar por qualquer motivo.
      */
-    function executeLogin(string $userName, string $password, string $fullPathToLocalData = "") : bool;
+    function executeLogin(
+        string $userName,
+        string $password,
+        string $fullPathToLocalData = ""
+    ) : bool;
+    /**
+     * Dá ao usuário atualmente logado um tipo especial de permissão (geralmente concedida
+     * por um usuário de nível superior) para que ele possa executar determinadas ações que
+     * de outra forma não seriam possíveis.
+     *
+     * @param       string $userName
+     *              Nome do usuário.
+     *
+     * @param       string $password
+     *              Senha de autenticação.
+     *
+     * @param       string $typeOfPermission
+     *              Tipo de permissão concedida.
+     *
+     * @param       string $fullPathToLocalData
+     *              Caminho completo até o diretório que armazena dados locais.
+     *              (deve ser usado apenas para casos onde sessionType = "local")
+     *
+     * @return      bool
+     */
+    function grantSpecialPermission(
+        string $userName,
+        string $password,
+        string $typeOfPermission,
+        string $fullPathToLocalData = ""
+    ) : bool;
     /**
      * Efetua o logout do usuário na aplicação e encerra sua sessão.
      *
