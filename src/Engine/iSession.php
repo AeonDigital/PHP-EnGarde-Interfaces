@@ -63,20 +63,18 @@ interface iSession
      * @param       string $sessionHash
      *              Hash de autenticação da sessão do UA.
      *
-     * @return      ?array
-     *              Dados referentes a sessão atualmente válida para o UA.
-     *              Retornará ``null`` caso nenhuma sessão seja identificada
+     * @return      bool
      */
-    function loadSessionData(string $sessionHash) : ?array;
+    function loadSessionData(string $sessionHash) : bool;
     /**
      * Carrega as informações do usuário de ``userName`` indicado.
      *
      * @param       string $userName
      *              Nome do usuário.
      *
-     * @return      ?array
+     * @return      bool
      */
-    function loadUserData(string $userName) : ?array;
+    function loadUserData(string $userName) : bool;
 
 
 
