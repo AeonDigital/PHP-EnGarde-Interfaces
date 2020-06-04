@@ -241,11 +241,12 @@ interface iSecurity
      *
      * Em caso afirmativo, carrega os dados do usuário autenticado.
      *
-     * @param       string $authInfo
+     * @param       string $sessionHash
+     *              Hash de autenticação da sessão do UA.
      *
      * @return      bool
      */
-    function checkAuthenticationInformation(string $authInfo) : bool;
+    function checkAuthenticationInformation(string $sessionHash) : bool;
     /**
      * Retorna o perfil do usuário atualmente reconhecido pelo sistema de segurança.
      *
