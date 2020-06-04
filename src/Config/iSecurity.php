@@ -276,7 +276,7 @@ interface iSecurity
      * @param       string $userName
      *              Nome do usuário.
      *
-     * @param       string $password
+     * @param       string $userPassword
      *              Senha de autenticação.
      *
      * @param       string $fullPathToLocalData
@@ -289,7 +289,7 @@ interface iSecurity
      */
     function executeLogin(
         string $userName,
-        string $password,
+        string $userPassword,
         string $fullPathToLocalData = ""
     ) : bool;
     /**
@@ -300,7 +300,7 @@ interface iSecurity
      * @param       string $userName
      *              Nome do usuário.
      *
-     * @param       string $password
+     * @param       string $userPassword
      *              Senha de autenticação.
      *
      * @param       string $typeOfPermission
@@ -314,7 +314,7 @@ interface iSecurity
      */
     function grantSpecialPermission(
         string $userName,
-        string $password,
+        string $userPassword,
         string $typeOfPermission,
         string $fullPathToLocalData = ""
     ) : bool;
