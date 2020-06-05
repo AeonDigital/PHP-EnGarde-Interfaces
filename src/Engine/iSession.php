@@ -34,18 +34,6 @@ interface iSession
 
 
     /**
-     * Permite definir os dados existentes do cookie de segurança.
-     *
-     * @param       array $cookieData
-     *              Array associativo do cookie de segurança.
-     *
-     * @return      void
-     */
-    function setSecurityCookieData(array $securityCookieData) : void;
-
-
-
-    /**
      * Retorna o status atual do login do UA.
      *
      * @return      string
@@ -61,20 +49,23 @@ interface iSession
 
 
     /**
-     * Permite definir o diretório onde os dados da aplicação estão armazenados.
+     * Permite definir um array associativo contendo as informações de segurança
+     * exigidas para identificar e autenticar um UA em uma requisição.
      *
-     * @param       string $pathToLocalData
-     *              Caminho completo até o diretório de dados.
+     * @param       array $uaSecurityData
+     *              Array associativo com as informações de segurança.
      *
      * @return      void
-     */
-    function setPathToLocalData(string $pathToLocalData) : void;
-    /**
-     * Resgata o caminho completo até onde os dados da aplicação estão armazenados.
      *
-     * @return      string
      */
-    function getPathToLocalData() : string;
+    function setUASecurityData(array $uaSecurityData) : void;
+
+
+
+
+
+
+
 
 
 
