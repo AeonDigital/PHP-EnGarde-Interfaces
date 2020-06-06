@@ -115,12 +115,12 @@ interface iSession
      * Verifica se o usuário informado existe e está apto a receber autenticação para a
      * aplicação corrente.
      *
-     * @param       string $userLogin
+     * @param       string $userName
      *              Nome do usuário.
      *
      * @return      bool
      */
-    function checkUserLogin(string $userLogin) : bool;
+    function checkUserName(string $userName) : bool;
     /**
      * Verifica se a senha do usuário confere.
      *
