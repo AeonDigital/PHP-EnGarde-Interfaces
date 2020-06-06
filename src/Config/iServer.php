@@ -62,16 +62,6 @@ interface iServer
 
 
     /**
-     * Indica que as requisições feitas para o domínio devem ser realizadas sob o protocolo
-     * HTTPS.
-     *
-     * @return      bool
-     */
-    function getForceHTTPS() : bool;
-
-
-
-    /**
      * Baseado nos dados da requisição que está sendo executada.
      * Retorna uma coleção de headers ``HTTP`` definidos.
      *
@@ -223,6 +213,16 @@ interface iServer
      * @return      string
      */
     function getRootPath() : string;
+
+
+
+    /**
+     * Indica que as requisições feitas para o domínio devem ser realizadas sob o protocolo
+     * HTTPS.
+     *
+     * @return      bool
+     */
+    function getForceHTTPS() : bool;
 
 
 
