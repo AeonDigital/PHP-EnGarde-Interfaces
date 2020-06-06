@@ -136,14 +136,11 @@ interface iSession
     /**
      * Inicia os sets de segurança necessários para que uma sessão autenticada possa iniciar.
      *
-     * @param       string $sessionHash
-     *              Hash de autenticação da sessão do UA.
-     *
      * @return      bool
      *              Retornará ``true`` caso a ação tenha sido bem sucedida, ``false``
      *              se houver alguma falha no processo.
      */
-    function inityAuthenticatedSession(string $sessionHash) : bool;
+    function inityAuthenticatedSession() : bool;
     /**
      * Encerra a sessão autenticada do usuário.
      *
