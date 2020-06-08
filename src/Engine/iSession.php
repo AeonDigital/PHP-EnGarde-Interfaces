@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Engine;
 
-
+use AeonDigital\Interfaces\Http\Data\iCookie as iCookie;
 
 
 
@@ -25,11 +25,48 @@ interface iSession
 
 
     /**
-     * Retorna os dados de um usuário que esteja carregado no momento.
+     * Cookie de segurança que identifica a sessão atualmente setada.
+     *
+     * @return      iCookie
+     */
+    function retrieveSecurityCookie() : iCookie;
+    /**
+     * Caminho completo até o diretório de dados da aplicação.
+     * Usado em casos onde as informações de sessão estão armazenadas fisicamente
+     * junto com a aplicação.
+     *
+     * @return      string
+     */
+    function retrievePathToLocalData() : string;
+    /**
+     * Retorna os dados da sessão autenticada que está atualmente reconhecida,
+     * ativa e válida.
      *
      * @return      ?array
      */
-    function retrieveUserData() : ?array;
+    function retrieveAuthenticatedSession() : ?array;
+
+
+
+    /**
+     * Retorna os dados de um usuário autenticado que esteja associado a sessão
+     * que está reconhecida, ativa e válida.
+     *
+     * @return      ?array
+     */
+    function retrieveAuthenticatedUser() : ?array;
+    /**
+     * Retorna o perfil de segurança do usuário atualmente em uso.
+     *
+     * @return      string
+     */
+    function retrieveAuthenticatedUserProfile() : string;
+    /**
+     * Retorna uma coleção de perfis de segurança que o usuário tem autorização de utilizar.
+     *
+     * @return      array
+     */
+    function retrieveAuthenticatedUserProfiles() : array;
 
 
 
@@ -48,129 +85,50 @@ interface iSession
 
 
 
-    /**
-     * Permite definir um array associativo contendo as informações de segurança
-     * exigidas para identificar e autenticar um UA em uma requisição.
-     *
-     * @param       array $uaSecurityData
-     *              Array associativo com as informações de segurança.
-     *
-     * @return      void
-     *
-     */
-    function setUASecurityData(array $uaSecurityData) : void;
-
-
-
-
-
-
-
-
 
 
     /**
-     * Renova a sessão do usuário.
-     *
-     * @param       int $sessionTimeout
-     *              Tempo (em minutos) em que a sessão deve ser expandida.
-     *
-     * @return      bool
-     *              Retornará ``true`` caso a ação tenha sido bem sucedida, ``false``
-     *              se houver alguma falha no processo.
-     */
-    function renewSession(int $sessionTimeout) : bool;
-
-
-
-    /**
-     * A partir do hash de autenticação da sessão do UA, carrega os dados da sessão caso ela
-     * ainda esteja válida.
-     *
-     * @param       string $sessionHash
-     *              Hash de autenticação da sessão do UA.
-     *
-     * @return      bool
-     */
-    function loadSessionData(string $sessionHash) : bool;
-    /**
-     * Carrega as informações do usuário de ``userName`` indicado.
+     * Efetua o login do usuário.
      *
      * @param       string $userName
      *              Nome do usuário.
-     *
-     * @return      bool
-     */
-    function loadUserData(string $userName) : bool;
-
-
-
-    /**
-     * Identifica se o IP do UA está liberado para uso na aplicação.
-     *
-     * @return      bool
-     */
-    function checkValidIP() : bool;
-    /**
-     * Verifica se o usuário informado existe e está apto a receber autenticação para a
-     * aplicação corrente.
-     *
-     * @param       string $userName
-     *              Nome do usuário.
-     *
-     * @return      bool
-     */
-    function checkUserName(string $userName) : bool;
-    /**
-     * Verifica se a senha do usuário confere.
      *
      * @param       string $userPassword
-     *              Senha do usuário.
+     *              Senha de autenticação.
      *
      * @return      bool
+     *              Retornará ``true`` quando o login for realizado com
+     *              sucesso e ``false`` quando falhar por qualquer motivo.
      */
-    function checkUserPassword(string $userPassword) : bool;
-
-
-
+    function executeLogin(
+        string $userName,
+        string $userPassword
+    ) : bool;
     /**
-     * Inicia os sets de segurança necessários para que uma sessão autenticada possa iniciar.
+     * Dá ao usuário atualmente logado um tipo especial de permissão (geralmente concedida
+     * por um usuário de nível superior) para que ele possa executar determinadas ações que
+     * de outra forma não seriam possíveis.
+     *
+     * @param       string $userName
+     *              Nome do usuário.
+     *
+     * @param       string $userPassword
+     *              Senha de autenticação.
+     *
+     * @param       string $typeOfPermission
+     *              Tipo de permissão concedida.
      *
      * @return      bool
-     *              Retornará ``true`` caso a ação tenha sido bem sucedida, ``false``
-     *              se houver alguma falha no processo.
      */
-    function inityAuthenticatedSession() : bool;
+    function grantSpecialPermission(
+        string $userName,
+        string $userPassword,
+        string $typeOfPermission
+    ) : bool;
     /**
-     * Encerra a sessão autenticada do usuário.
-     *
-     * @return      bool
-     *              Retornará ``true`` caso a ação tenha sido bem sucedida, ``false``
-     *              se houver alguma falha no processo.
-     */
-    function closeAuthenticatedSession() : bool;
-
-
-
-    /**
-     * Gera um registro de atividade do usuário.
-     *
-     * @param       array $logRegistryData
-     *              Dados que serão usados para preencher o log de atividade.
-     *
-     * @return      bool
-     *              Retornará ``true`` caso a ação tenha sido bem sucedida, ``false``
-     *              se houver alguma falha no processo.
-     */
-    function registerLogActivity(array $logRegistryData) : bool;
-
-
-
-    /**
-     * Identifica se o usuário atualmente autenticado tem ou não permissão de acessar
-     * a rota atual.
+     * Efetua o logout do usuário na aplicação e encerra sua sessão.
      *
      * @return      bool
      */
-    function checkPermissionForRoute() : bool;
+    function executeLogout() : bool;
 }
