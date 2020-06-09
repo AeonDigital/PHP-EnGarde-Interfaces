@@ -91,6 +91,12 @@ interface iSession
      * @return      string
      */
     function retrieveBrowseStatus() : string;
+    /**
+     * Retorna o status atual relativo aos testes de segurança.
+     *
+     * @return      string
+     */
+    function retrieveSecurityStatus() : string;
 
 
 
