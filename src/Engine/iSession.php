@@ -116,7 +116,7 @@ interface iSession
     /**
      * Efetua o login do usuário.
      *
-     * @param       string $userLogin
+     * @param       string $userName
      *              Nome do usuário.
      *
      * @param       string $userPassword
@@ -127,7 +127,7 @@ interface iSession
      *              sucesso e ``false`` quando falhar por qualquer motivo.
      */
     function executeLogin(
-        string $userLogin,
+        string $userName,
         string $userPassword
     ) : bool;
     /**
@@ -135,7 +135,7 @@ interface iSession
      * por um usuário de nível superior) para que ele possa executar determinadas ações que
      * de outra forma não seriam possíveis.
      *
-     * @param       string $userLogin
+     * @param       string $userName
      *              Nome do usuário.
      *
      * @param       string $userPassword
@@ -147,7 +147,7 @@ interface iSession
      * @return      bool
      */
     function grantSpecialPermission(
-        string $userLogin,
+        string $userName,
         string $userPassword,
         string $typeOfPermission
     ) : bool;
