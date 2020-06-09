@@ -103,9 +103,20 @@ interface iSession
 
 
     /**
+     * Verifica se o UA possui uma sessão válida para ser usada.
+     *
+     * @return      void
+     */
+    function authenticateUserAgentSession() : void;
+
+
+
+
+
+    /**
      * Efetua o login do usuário.
      *
-     * @param       string $userName
+     * @param       string $userLogin
      *              Nome do usuário.
      *
      * @param       string $userPassword
@@ -116,7 +127,7 @@ interface iSession
      *              sucesso e ``false`` quando falhar por qualquer motivo.
      */
     function executeLogin(
-        string $userName,
+        string $userLogin,
         string $userPassword
     ) : bool;
     /**
@@ -124,7 +135,7 @@ interface iSession
      * por um usuário de nível superior) para que ele possa executar determinadas ações que
      * de outra forma não seriam possíveis.
      *
-     * @param       string $userName
+     * @param       string $userLogin
      *              Nome do usuário.
      *
      * @param       string $userPassword
@@ -136,7 +147,7 @@ interface iSession
      * @return      bool
      */
     function grantSpecialPermission(
-        string $userName,
+        string $userLogin,
         string $userPassword,
         string $typeOfPermission
     ) : bool;
