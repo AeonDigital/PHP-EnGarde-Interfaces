@@ -67,15 +67,15 @@ interface iSession
     /**
      * Retorna o perfil de segurança do usuário atualmente em uso.
      *
-     * @return      string
+     * @return      ?string
      */
-    function retrieveAuthenticatedUserProfile() : string;
+    function retrieveAuthenticatedUserProfile() : ?string;
     /**
      * Retorna uma coleção de perfis de segurança que o usuário tem autorização de utilizar.
      *
-     * @return      array
+     * @return      ?array
      */
-    function retrieveAuthenticatedUserProfiles() : array;
+    function retrieveAuthenticatedUserProfiles() : ?array;
 
 
 
