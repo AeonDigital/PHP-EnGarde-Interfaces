@@ -86,12 +86,6 @@ interface iSession
      * @return      string
      */
     function retrieveSecurityStatus() : string;
-    /**
-     * Retorna o status atual da navegação do UA.
-     *
-     * @return      string
-     */
-    function retrieveBrowseStatus() : string;
 
 
 
