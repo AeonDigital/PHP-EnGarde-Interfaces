@@ -94,16 +94,13 @@ interface iSecurity
 
 
     /**
-     * Retorna o tipo de sessão que está sendo usada.
-     * - "local"     :  A sessão autenticada do usuário é armazenada na própria aplicação.
-     * - "database"  :  A sessão é armazenada num banco de dados.
-     *
-     * O formato ``local`` deve ser utilizado apenas quando não há realmente um banco de dados
-     * disponível.
+     * Retorna o nome de uma classe que implemente a interface
+     * ``AeonDigital\EnGarde\Interfaces\Engine\iSession`` e que será responsável pelo
+     * controle das sessões de UA na aplicação.
      *
      * @return      string
      */
-    function getSessionType() : string;
+    function getSessionNamespace() : string;
 
 
 

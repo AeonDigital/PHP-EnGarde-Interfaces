@@ -25,15 +25,6 @@ interface iSession
 
 
     /**
-     * Retorna o tipo de sessão que a instância concreta representa.
-     *
-     * @return      string
-     */
-    function retrieveSessionType() : string;
-
-
-
-    /**
      * Cookie de segurança que identifica a sessão atualmente setada.
      *
      * @return      iCookie
