@@ -209,35 +209,6 @@ interface iSecurity
 
 
     /**
-     * Retorna um array associativo contendo os nomes de perfils de usuário e
-     * respectivas credenciais de acesso ao banco de dados.
-     *
-     * @param       string $userProfile
-     *              Se definido, retornará exclusivamente os dados referentes
-     *              a este próprio perfil.
-     *              Se o perfil indicado não existir, deverá retornar ``[]``.
-     *
-     * @return      array
-     */
-    function getDBCredentials(string $userProfile = "") : array;
-    /**
-     * Retorna um objeto ``iDAL`` configurado com as credenciais correlacionadas
-     * ao atual perfil de usuário sendo usado pelo UA.
-     *
-     * @return      iDAL
-     */
-    function getDAL() : iDAL;
-
-
-
-
-
-
-
-
-
-
-    /**
      * Retorna uma instância configurada a partir de um array que contenha
      * as chaves correlacionadas a cada propriedade aqui definida.
      *
