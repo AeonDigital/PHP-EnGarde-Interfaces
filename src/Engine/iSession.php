@@ -47,13 +47,16 @@ interface iSession
      * @return      string
      */
     function retrievePathToLocalData() : string;
+
+
+
     /**
      * Retorna os dados da sessão autenticada que está atualmente reconhecida,
      * ativa e válida.
      *
      * @return      ?array
      */
-    function retrieveAuthenticatedSession() : ?array;
+    function retrieveSession() : ?array;
 
 
 
@@ -63,19 +66,26 @@ interface iSession
      *
      * @return      ?array
      */
-    function retrieveAuthenticatedUser() : ?array;
+    function retrieveUser() : ?array;
     /**
      * Retorna o perfil de segurança do usuário atualmente em uso.
      *
      * @return      ?string
      */
-    function retrieveAuthenticatedUserProfile() : ?string;
+    function retrieveUserProfile() : ?string;
     /**
      * Retorna uma coleção de perfis de segurança que o usuário tem autorização de utilizar.
      *
      * @return      ?array
      */
-    function retrieveAuthenticatedUserProfiles() : ?array;
+    function retrieveUserProfiles() : ?array;
+    /**
+     * Efetua a troca do perfil de segurança atualmente em uso por outro que deve estar
+     * na coleção de perfis disponíveis para este mesmo usuário.
+     *
+     * @return      ?array
+     */
+    function changeUserProfile(string $profile) : bool;
 
 
 
@@ -125,12 +135,46 @@ interface iSession
 
 
 
-
-
     /**
      * Verifica se o UA possui uma sessão válida para ser usada.
      *
      * @return      void
      */
     function authenticateUserAgentSession() : void;
+
+    /**
+     * Gera um registro de atividade para o usuário atual.
+     *
+     * @param       string $methodHTTP
+     *              Método HTTP evocado.
+     *
+     * @param       string $fullURL
+     *              URL completa evocada pelo UA.
+     *
+     * @param       ?array $postData
+     *              Dados que foram postados na requisição.
+     *
+     * @param       string $controller
+     *              Controller que foi acionado.
+     *
+     * @param       string $action
+     *              Nome da action que foi executada.
+     *
+     * @param       string $activity
+     *              Atividade executada.
+     *
+     * @param       string $obs
+     *              Observação.
+     *
+     * @return      bool
+     */
+    function registerLogActivity(
+        string $methodHTTP,
+        string $fullURL,
+        ?array $postData,
+        string $controller,
+        string $action,
+        string $activity,
+        string $obs
+    ) : bool;
 }
