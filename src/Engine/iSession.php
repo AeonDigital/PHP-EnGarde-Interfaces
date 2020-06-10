@@ -142,6 +142,8 @@ interface iSession
      */
     function authenticateUserAgentSession() : void;
 
+
+
     /**
      * Gera um registro de atividade para o usuário atual.
      *
