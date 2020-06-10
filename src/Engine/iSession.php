@@ -80,34 +80,18 @@ interface iSession
 
 
     /**
-     * Retorna o status atual do login do UA.
+     * Retorna o status atual relativo a identificação e autenticação do UA
+     * para a sessão atual.
      *
      * @return      string
      */
-    function retrieveLoginStatus() : string;
+    function retrieveSecurityStatus() : string;
     /**
      * Retorna o status atual da navegação do UA.
      *
      * @return      string
      */
     function retrieveBrowseStatus() : string;
-    /**
-     * Retorna o status atual relativo aos testes de segurança.
-     *
-     * @return      string
-     */
-    function retrieveSecurityStatus() : string;
-
-
-
-
-
-    /**
-     * Verifica se o UA possui uma sessão válida para ser usada.
-     *
-     * @return      void
-     */
-    function authenticateUserAgentSession() : void;
 
 
 
@@ -157,4 +141,15 @@ interface iSession
      * @return      bool
      */
     function executeLogout() : bool;
+
+
+
+
+
+    /**
+     * Verifica se o UA possui uma sessão válida para ser usada.
+     *
+     * @return      void
+     */
+    function authenticateUserAgentSession() : void;
 }
