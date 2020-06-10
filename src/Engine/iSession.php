@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace AeonDigital\EnGarde\Interfaces\Engine;
 
 use AeonDigital\Interfaces\Http\Data\iCookie as iCookie;
-
+use AeonDigital\Interfaces\DAL\iDAL as iDAL;
 
 
 
@@ -129,9 +129,9 @@ interface iSession
     /**
      * Verifica se o UA possui uma sessão válida para ser usada.
      *
-     * @return      void
+     * @return      bool
      */
-    function authenticateUserAgentSession() : void;
+    function authenticateUserAgentSession() : bool;
 
 
 
@@ -170,4 +170,15 @@ interface iSession
         string $activity,
         string $obs
     ) : bool;
+
+
+
+
+    /**
+     * Retorna um objeto ``iDAL`` configurado com as credenciais correlacionadas
+     * ao atual perfil de usuário sendo usado pelo UA.
+     *
+     * @return      iDAL
+     */
+    function getDAL() : iDAL;
 }
