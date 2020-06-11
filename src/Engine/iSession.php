@@ -166,7 +166,7 @@ interface iSession
      * @param       string $activity
      *              Atividade executada.
      *
-     * @param       string $obs
+     * @param       string $note
      *              Observação.
      *
      * @return      bool
@@ -178,6 +178,6 @@ interface iSession
         string $controller,
         string $action,
         string $activity,
-        string $obs
+        string $note
     ) : bool;
 }
