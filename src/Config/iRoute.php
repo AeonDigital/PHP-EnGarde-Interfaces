@@ -120,6 +120,12 @@ interface iRoute
      * @return      array
      */
     function getCustomProperties() : array;
+    /**
+     * Retorna ``true`` caso a atividade desta rota deva ser registrada no log do sistema.
+     *
+     * @return      bool
+     */
+    function getIsAutoLog() : bool;
 
 
 
