@@ -42,6 +42,16 @@ interface iSession
 
 
     /**
+     * Retorna um objeto ``iDAL`` configurado com as credenciais correlacionadas
+     * ao atual perfil de usuário sendo usado pelo UA.
+     *
+     * @return      iDAL
+     */
+    function getDAL() : iDAL;
+
+
+
+    /**
      * Retorna os dados da sessão autenticada que está atualmente reconhecida,
      * ativa e válida.
      *
@@ -118,6 +128,12 @@ interface iSession
         string $sessionHash = ""
     ) : bool;
     /**
+     * Verifica se o UA possui uma sessão válida para ser usada.
+     *
+     * @return      bool
+     */
+    function checkUserAgentSession() : bool;
+    /**
      * Efetua o logout do usuário na aplicação e encerra sua sessão.
      *
      * @return      bool
@@ -126,12 +142,6 @@ interface iSession
 
 
 
-    /**
-     * Verifica se o UA possui uma sessão válida para ser usada.
-     *
-     * @return      bool
-     */
-    function authenticateUserAgentSession() : bool;
 
 
 
@@ -170,15 +180,4 @@ interface iSession
         string $activity,
         string $obs
     ) : bool;
-
-
-
-
-    /**
-     * Retorna um objeto ``iDAL`` configurado com as credenciais correlacionadas
-     * ao atual perfil de usuário sendo usado pelo UA.
-     *
-     * @return      iDAL
-     */
-    function getDAL() : iDAL;
 }
