@@ -143,6 +143,33 @@ interface iSession
 
 
 
+    /**
+     * Verifica se o usuário atualmente identificado possui permissão de acesso
+     * na rota identificada a partir do seu perfil em uso.
+     *
+     * @param       string $methodHTTP
+     *              Método HTTP sendo usado.
+     *
+     * @param       string $rawURL
+     *              URL evocada em seu estado bruto.
+     *
+     * @return      boolean
+     */
+    function checkRoutePermission(
+        string $methodHTTP,
+        string $rawURL
+    ) : bool;
+    /**
+     * Retorna uma URI para a qual o usuário deve ser direcionado em caso de falha
+     * na verificação de permissão da rota atual.
+     *
+     * @return      string
+     */
+    function getRouteRedirect() : string;
+
+
+
+
 
 
     /**
