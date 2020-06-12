@@ -77,6 +77,18 @@ interface iServer
      */
     function getRequestHTTPVersion() : string;
     /**
+     * Resgata a identificação do UA que está executando esta requisição.
+     *
+     * @return      string
+     */
+    function getRequestUserAgent() : string;
+    /**
+     * Retorna o ``IP`` do UA que está executando esta requisição.
+     *
+     * @return      string
+     */
+    function getRequestUserAgentIP() : string;
+    /**
      * Baseado nos dados da requisição que está sendo executada.
      * Indica se a requisição está exigindo o uso de ``HTTPS``.
      *
@@ -163,16 +175,6 @@ interface iServer
      * @return      string
      */
     function getCurrentURI() : string;
-
-
-
-    /**
-     * Retorna o ``IP`` do usuário que está no momento visitando o site.
-     * Um valor vazio em retorno indica que não foi possível identificar o ``IP``.
-     *
-     * @return      string
-     */
-    function getClientIP() : string;
 
 
 
@@ -490,6 +492,27 @@ interface iServer
      */
     function getRawRouteConfig() : ?array;
 
+
+
+    /**
+     * Redireciona o ``UA`` para a URL indicada.
+     *
+     * Esta ação interrompe o script imediatamente após o redirecionamento.
+     *
+     * @param       string $url
+     *              URL para onde o ``UA`` será redirecionado.
+     *
+     * @param       int $code
+     *              Código HTTP.
+     *
+     * @param       string $message
+     *              Mensagem HTTP.
+     *              Se nenhuma for informada irá usar a mensagem padrão que corresponda
+     *              ao código HTTP indicado.
+     *
+     * @return      void
+     */
+    function redirectTo(string $url, int $code = 302, string $message = "") : void;
 
 
 
