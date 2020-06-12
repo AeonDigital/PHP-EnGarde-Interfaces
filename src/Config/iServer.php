@@ -7,9 +7,8 @@ use AeonDigital\Interfaces\Http\iFactory as iFactory;
 use AeonDigital\Interfaces\Http\Message\iServerRequest as iServerRequest;
 use AeonDigital\EnGarde\Interfaces\Config\iApplication as iApplication;
 use AeonDigital\EnGarde\Interfaces\Config\iSecurity as iSecurity;
+use AeonDigital\EnGarde\Interfaces\Engine\iSession as iSession;
 use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
-
-
 
 
 
@@ -462,7 +461,14 @@ interface iServer
      *
      * @return      ?iSecurity
      */
-    function getSecurityConfig(array $config = []) : ?iSecurity;
+    function getSecurityConfig(array $config = []) : iSecurity;
+    /**
+     * Retorna uma instância ``iSession`` para efetuar o controle de sessão
+     * de UA dentro da aplicação.
+     *
+     * @return      iSession
+     */
+    function getSecuritySession() : iSession;
     /**
      * Retorna a instância ``Config\iRoute`` a ser usada.
      *
