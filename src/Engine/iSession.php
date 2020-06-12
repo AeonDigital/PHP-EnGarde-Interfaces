@@ -153,7 +153,7 @@ interface iSession
      * @param       string $rawURL
      *              URL evocada em seu estado bruto.
      *
-     * @return      boolean
+     * @return      bool
      */
     function checkRoutePermission(
         string $methodHTTP,
