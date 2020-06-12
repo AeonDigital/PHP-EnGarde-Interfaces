@@ -173,7 +173,7 @@ interface iSession
 
 
     /**
-     * Gera um registro de atividade para o usuário atual.
+     * Gera um registro de atividade para a requisição atual.
      *
      * @param       string $methodHTTP
      *              Método HTTP evocado.
