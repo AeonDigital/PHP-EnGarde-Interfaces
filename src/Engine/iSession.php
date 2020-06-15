@@ -42,8 +42,8 @@ interface iSession
 
 
     /**
-     * Informará ``true`` caso a implementação esteja apta a utilizar um banco de
-     * dados.
+     * Informará ``true`` caso a implementação esteja apta a utilizar um
+     * banco de dados.
      *
      * @return      bool
      */
