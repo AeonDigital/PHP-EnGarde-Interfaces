@@ -472,7 +472,7 @@ interface iServer
      */
     function getSecuritySession() : iSession;
     /**
-     * Identifica se há definições de seguranças definidas.
+     * Identifica se existem definições de seguranças.
      *
      * Normalmente isto significa verificar se os métodos ``getSecurityConfig`` e
      * ``getSecuritySession`` estão, ambos, aptos a retornarem instâncias de suas respectivas
