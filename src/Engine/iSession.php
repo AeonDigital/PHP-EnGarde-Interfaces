@@ -42,6 +42,13 @@ interface iSession
 
 
     /**
+     * Informará ``true`` caso a implementação esteja apta a utilizar um banco de
+     * dados.
+     *
+     * @return      bool
+     */
+    function hasDataBase() : bool;
+    /**
      * Retorna um objeto ``iDAL`` configurado com as credenciais correlacionadas
      * ao atual perfil de usuário sendo usado pelo UA.
      *

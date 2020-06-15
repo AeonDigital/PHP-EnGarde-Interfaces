@@ -472,6 +472,16 @@ interface iServer
      */
     function getSecuritySession() : iSession;
     /**
+     * Identifica se há definições de seguranças definidas.
+     *
+     * Normalmente isto significa verificar se os métodos ``getSecurityConfig`` e
+     * ``getSecuritySession`` estão, ambos, aptos a retornarem instâncias de suas respectivas
+     * classes com as configurações correspondentes.
+     *
+     * @return      bool
+     */
+    function hasDefinedSecuritySettings() : bool;
+    /**
      * Retorna a instância ``Config\iRoute`` a ser usada.
      *
      * @param       ?array $config
