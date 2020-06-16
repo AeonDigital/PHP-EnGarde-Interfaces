@@ -82,6 +82,12 @@ interface iSession
      */
     function retrieveUserProfile() : ?string;
     /**
+     * Retorna o objeto completo do perfil de usuário atualmente em uso.
+     *
+     * @return      ?array
+     */
+    function retrieveUserProfileObject() : ?array;
+    /**
      * Retorna uma coleção de perfis de segurança que o usuário tem autorização de utilizar.
      *
      * @return      ?array
