@@ -369,6 +369,15 @@ interface iServer
      * @return      string
      */
     function getApplicationRequestUri() : string;
+    /**
+     * Retorna a URI que está sendo requisitada em ``nível de aplicação``, ou seja, irá SEMPRE
+     * adicionar o nome da aplicação que está sendo chamada na primeira partícula da URI caso
+     * ela esteja omitida e em adição, trará qualquer querystring definida originalmente na
+     * requisição.
+     *
+     * @return      string
+     */
+    function getApplicationRequestFullUri() : string;
 
 
 
