@@ -163,14 +163,14 @@ interface iSession
      * @param       string $methodHTTP
      *              Método HTTP sendo usado.
      *
-     * @param       string $rawURL
-     *              URL evocada em seu estado bruto.
+     * @param       string $rawRoute
+     *              Rota evocada em seu estado bruto (contendo o nome da aplicação).
      *
      * @return      bool
      */
     function checkRoutePermission(
         string $methodHTTP,
-        string $rawURL
+        string $rawRoute
     ) : bool;
     /**
      * Retorna uma URI para a qual o usuário deve ser direcionado em caso de falha
