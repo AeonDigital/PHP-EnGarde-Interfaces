@@ -94,12 +94,24 @@ interface iRoute
      */
     function getMethod() : string;
     /**
-     * Retorna a rota que está sendo resolvida e seus respectivos aliases.
+     * Retorna um array contendo todas as rotas que respondem a esta mesma configuração.
      * As rotas devem sempre ser definidas de forma relativa à raiz (começando com "/").
+     * Nesta coleção, o nome da aplicação não deverá estar presente pois deve replicar o padrão
+     * definido nos controllers.
      *
      * @return      array
      */
     function getRoutes() : array;
+    /**
+     * Retorna a rota base que está sendo utilizada.
+     *
+     * @param       bool $withApplicationName
+     *              Quando ``true`` irá adicionar o nome da aplicação atual na primeira
+     *              partícula da rota em si.
+     *
+     * @return      string
+     */
+    function getActiveRoute(bool $withApplicationName = false) : string;
     /**
      * Retorna ``true`` caso aplicação deve priorizar o uso do mime ``xhtml`` sobre o ``html``.
      *
