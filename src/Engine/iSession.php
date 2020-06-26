@@ -160,8 +160,8 @@ interface iSession
      * Verifica se o usuário atualmente identificado possui permissão de acesso
      * na rota identificada a partir do seu perfil em uso.
      *
-     * @param       string $methodHTTP
-     *              Método HTTP sendo usado.
+     * @param       string $methodHttp
+     *              Método ``Http`` sendo usado.
      *
      * @param       string $rawRoute
      *              Rota evocada em seu estado bruto (contendo o nome da aplicação).
@@ -169,7 +169,7 @@ interface iSession
      * @return      bool
      */
     function checkRoutePermission(
-        string $methodHTTP,
+        string $methodHttp,
         string $rawRoute
     ) : bool;
     /**
@@ -188,8 +188,8 @@ interface iSession
     /**
      * Gera um registro de atividade para a requisição atual.
      *
-     * @param       string $methodHTTP
-     *              Método HTTP evocado.
+     * @param       string $methodHttp
+     *              Método ``Http`` evocado.
      *
      * @param       string $fullURL
      *              URL completa evocada pelo UA.
@@ -212,7 +212,7 @@ interface iSession
      * @return      bool
      */
     function registerLogActivity(
-        string $methodHTTP,
+        string $methodHttp,
         string $fullURL,
         ?array $postData,
         string $controller,

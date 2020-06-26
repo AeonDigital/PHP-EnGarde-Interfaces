@@ -14,7 +14,7 @@ use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
 
 /**
  * Interface para uma classe que representa a coleção de configurações do servidor no momento
- * em que a requisição ``HTTP`` é recebida.
+ * em que a requisição ``Http`` é recebida.
  *
  * @package     AeonDigital\EnGarde\Interfaces
  * @author      Rianna Cantarelli <rianna@aeondigital.com.br>
@@ -62,7 +62,7 @@ interface iServer
 
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Retorna uma coleção de headers ``HTTP`` definidos.
+     * Retorna uma coleção de headers ``Http`` definidos.
      *
      * @return      array
      *              Retornará ``[]`` caso nenhum seja encontrado.
@@ -70,12 +70,12 @@ interface iServer
     function getRequestHeaders() : array;
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Retorna a versão do protocolo ``HTTP``.
+     * Retorna a versão do protocolo ``Http``.
      *
      * @return      string
      *              Caso não seja possível identificar a versão deve ser retornado o valor ``1.1``.
      */
-    function getRequestHTTPVersion() : string;
+    function getRequestHttpVersion() : string;
     /**
      * Resgata a identificação do UA que está executando esta requisição.
      *
@@ -90,14 +90,14 @@ interface iServer
     function getRequestUserAgentIP() : string;
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Indica se a requisição está exigindo o uso de ``HTTPS``.
+     * Indica se a requisição está exigindo o uso de ``Https``.
      *
      * @return      bool
      */
-    function getRequestIsUseHTTPS() : bool;
+    function getRequestIsUseHttps() : bool;
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Retorna o método ``HTTP`` que está sendo usado.
+     * Retorna o método ``Http`` que está sendo usado.
      *
      * @return      string
      */
@@ -126,7 +126,7 @@ interface iServer
     function getRequestPath() : string;
     /**
      * Baseado nos dados da requisição que está sendo executada.
-     * Retorna a porta ``HTTP`` que está sendo evocada.
+     * Retorna a porta ``Http`` que está sendo evocada.
      *
      * @return      int
      */
@@ -219,11 +219,11 @@ interface iServer
 
     /**
      * Indica que as requisições feitas para o domínio devem ser realizadas sob o protocolo
-     * HTTPS.
+     * ``Https``.
      *
      * @return      bool
      */
-    function getForceHTTPS() : bool;
+    function getForceHttps() : bool;
 
 
 
@@ -341,7 +341,7 @@ interface iServer
 
 
     /**
-     * Retorna o nome da aplicação que deve responder a requisição ``HTTP`` atual.
+     * Retorna o nome da aplicação que deve responder a requisição ``Http`` atual.
      *
      * @return      string
      */
@@ -397,7 +397,7 @@ interface iServer
 
 
     /**
-     * Retorna a coleção de métodos HTTP que devem poder ser usados pelas actions.
+     * Retorna a coleção de métodos ``Http`` que devem poder ser usados pelas actions.
      * Ou seja, aqueles que os desenvolvedores terão acesso de configurar.
      *
      * Originalmente estes:
@@ -405,9 +405,9 @@ interface iServer
      *
      * @return      array
      */
-    function getDeveloperHTTPMethods() : array;
+    function getDeveloperHttpMethods() : array;
     /**
-     * Retorna a coleção de métodos HTTP que devem poder ser controlados exclusivamente
+     * Retorna a coleção de métodos ``Http`` que devem poder ser controlados exclusivamente
      * pelo próprio framework.
      *
      * Originalmente estes:
@@ -415,7 +415,7 @@ interface iServer
      *
      * @return      array
      */
-    function getFrameworkHTTPMethods() : array;
+    function getFrameworkHttpMethods() : array;
 
 
 
@@ -522,12 +522,12 @@ interface iServer
      *              URL para onde o ``UA`` será redirecionado.
      *
      * @param       int $code
-     *              Código HTTP.
+     *              Código ``Http``.
      *
      * @param       string $message
-     *              Mensagem HTTP.
+     *              Mensagem ``Http``.
      *              Se nenhuma for informada irá usar a mensagem padrão que corresponda
-     *              ao código HTTP indicado.
+     *              ao código ``Http`` indicado.
      *
      * @return      void
      */

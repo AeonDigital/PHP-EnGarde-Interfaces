@@ -67,7 +67,7 @@ interface iRoute
      */
     function getAction() : string;
     /**
-     * Retorna os métodos ``HTTP`` que podem ser usados para esta mesma rota.
+     * Retorna os métodos ``Http`` que podem ser usados para esta mesma rota.
      *
      * @return      array
      */
@@ -88,7 +88,7 @@ interface iRoute
      */
     function getAllowedMimeTypes() : array;
     /**
-     * Retorna o método ``HTTP`` que está sendo usado para evocar esta rota.
+     * Retorna o método ``Http`` que está sendo usado para evocar esta rota.
      *
      * @return      string
      */

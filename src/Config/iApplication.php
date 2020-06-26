@@ -227,7 +227,17 @@ interface iApplication
      * @return      string
      */
     function getPathToErrorView(bool $fullPath = false) : string;
-
+    /**
+     * Resgata o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de necessidade
+     * de envio de uma simples mensagem ``Http``.
+     *
+     * @param       bool $fullPath
+     *              Se ``false`` retornará o caminho relativo.
+     *              Quando ``true`` deverá retornar o caminho completo.
+     *
+     * @return      string
+     */
+    function getPathToHttpMessageView(bool $fullPath = false) : string;
 
 
 
@@ -238,10 +248,10 @@ interface iApplication
 
 
     /**
-     * Resgata um array associativo contendo a correlação entre os métodos HTTP
+     * Resgata um array associativo contendo a correlação entre os métodos ``Http``
      * e suas respectivas classes de resolução.
      *
-     * Tais classes serão usadas exclusivamente para resolver os métodos HTTP que
+     * Tais classes serão usadas exclusivamente para resolver os métodos ``Http`` que
      * originalmente devem ser processados pelo framework.
      *
      * Originalmente estes:
@@ -257,7 +267,7 @@ interface iApplication
      *
      * @return      array
      */
-    function getHTTPSubSystemNamespaces() : array;
+    function getHttpSubSystemNamespaces() : array;
 
 
 
