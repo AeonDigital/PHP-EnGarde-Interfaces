@@ -328,6 +328,17 @@ interface iServer
      * @return      string
      */
     function getPathToErrorView(bool $fullPath = false) : string;
+    /**
+     * Resgata o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de necessidade
+     * de envio de uma simples mensagem ``Http``.
+     *
+     * @param       bool $fullPath
+     *              Se ``false`` retornará o caminho relativo.
+     *              Quando ``true`` deverá retornar o caminho completo.
+     *
+     * @return      string
+     */
+    function getPathToHttpMessageView(bool $fullPath = false) : string;
 
 
 
