@@ -422,12 +422,11 @@ interface iServer
 
 
     /**
-     * Efetua as configurações necessárias para os manipuladores de exceptions e errors
-     * para as aplicações do domínio.
+     * Efetua as configurações necessárias para o manipulador básico de mensagens Http.
      *
      * @return      void
      */
-    function setErrorListening() : void;
+    function setHttpRawMessage() : void;
     /**
      * Efetua configurações para o ``PHP`` conforme as propriedades definidas para esta classe.
      *
