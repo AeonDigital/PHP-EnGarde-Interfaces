@@ -85,6 +85,16 @@ interface iSecurity
 
 
     /**
+     * Retorna uma coleção de nomes de campos que servem como chaves identificadoras
+     * para os usuários do sistema.
+     *
+     * @return      array
+     */
+    function getLoginKeyNames() : array;
+
+
+
+    /**
      * Retornará o Id do usuário anonimo da aplicação.
      *
      * @return      int
