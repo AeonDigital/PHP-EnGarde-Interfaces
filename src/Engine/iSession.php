@@ -172,13 +172,6 @@ interface iSession
         string $methodHttp,
         string $rawRoute
     ) : bool;
-    /**
-     * Retorna uma URI para a qual o usuário deve ser direcionado em caso de falha
-     * na verificação de permissão da rota atual.
-     *
-     * @return      string
-     */
-    function getRouteRedirect() : string;
 
 
 
