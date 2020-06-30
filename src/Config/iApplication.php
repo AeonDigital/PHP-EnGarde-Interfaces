@@ -206,6 +206,13 @@ interface iApplication
      * @return      array
      */
     function getDefaultRouteConfig() : array;
+    /**
+     * Retorna um array de strings contendo em cada posição um dos diferentes métodos de obter
+     * a rota a ser executada segundo a requisição atual.
+     *
+     * @return      array
+     */
+    function getCheckRouteOrder() : array;
 
 
 
