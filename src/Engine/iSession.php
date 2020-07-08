@@ -177,6 +177,20 @@ interface iSession
 
 
 
+    /**
+     * Efetua o pré-processamento das rotas e suas respectivas permissões de acesso.
+     *
+     * @param       string $pathToAppRoutes
+     *              Caminho completo até o arquivo de rotas pré-configuradas.
+     *
+     * @return      void
+     */
+    function processRoutesPermissions(string $pathToAppRoutes) : void;
+
+
+
+
+
 
     /**
      * Gera um registro de atividade para a requisição atual.
