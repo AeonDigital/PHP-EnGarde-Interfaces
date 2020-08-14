@@ -218,6 +218,16 @@ interface iServer
 
 
     /**
+     * Retorna o caminho (a partir da raiz do domínio) até o diretório onde a o framework
+     * está rodando.
+     *
+     * @return      string
+     */
+    function getRootSubPath() : string;
+
+
+
+    /**
      * Indica que as requisições feitas para o domínio devem ser realizadas sob o protocolo
      * ``Https``.
      *
