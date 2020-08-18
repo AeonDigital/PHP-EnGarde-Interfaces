@@ -90,9 +90,13 @@ interface iSession
     /**
      * Retorna uma coleção de perfis de segurança que o usuário tem autorização de utilizar.
      *
+     * @param       string $applicationName
+     *              Se definido, retornará apenas os profiles que correspondem ao nome da
+     *              aplicação indicada.
+     *
      * @return      ?array
      */
-    function retrieveUserProfiles() : ?array;
+    function retrieveUserProfiles(string $applicationName = "") : ?array;
     /**
      * Efetua a troca do perfil de segurança atualmente em uso por outro que deve estar
      * na coleção de perfis disponíveis para este mesmo usuário.
