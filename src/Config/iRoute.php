@@ -65,7 +65,7 @@ interface iRoute
      *
      * @return string
      */
-    function getResourceID() : string;
+    function getResourceId() : string;
     /**
      * Retorna o nome da action que resolve a rota.
      *
