@@ -61,6 +61,12 @@ interface iRoute
      */
     function getControllerNamespace() : string;
     /**
+     * Retorna o Id do recurso que esta rota representa.
+     *
+     * @return string
+     */
+    function getResourceID() : string;
+    /**
      * Retorna o nome da action que resolve a rota.
      *
      * @return      string
