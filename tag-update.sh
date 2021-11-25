@@ -24,7 +24,7 @@ else
 
 
     VERSION_SPLIT=(${TAG_RAW_VERSION//\./ })
-    
+
     PROJECT_VERSION_MAJOR=${VERSION_SPLIT[0]}
     PROJECT_VERSION_MINOR=${VERSION_SPLIT[1]}
     PROJECT_VERSION_PATCH=${VERSION_SPLIT[2]}
@@ -62,7 +62,7 @@ else
         if [ "$2" == "alpha" ] || [ "$2" == "beta" ] || [ "$2" == "cr" ] || [ "$2" == "r" ]; then
           if [ "$2" == "r" ]; then
             PROJECT_VERSION_STABILITY=""
-          else 
+          else
             PROJECT_VERSION_STABILITY="-$2"
           fi
         else
@@ -105,4 +105,4 @@ else
       fi
     fi
   fi
-fi 
+fi

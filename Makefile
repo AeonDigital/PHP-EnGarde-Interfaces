@@ -28,7 +28,7 @@ git-log:
 	echo "" >> .tmplogdata
 	column .tmplogdata -e -t -s "|"
 	rm .tmplogdata
-	
+
 
 
 
@@ -45,25 +45,25 @@ tag-remark:
 	./tag-update.sh "remark"
 
 #
-# Atualiza o 'patch' da tag atualmente definida 
+# Atualiza o 'patch' da tag atualmente definida
 # para a branch principal 'main'.
 tag-update:
 	./tag-update.sh "version" "patch"
 
 #
-# Atualiza o 'minor version'  da tag atualmente definida 
+# Atualiza o 'minor version'  da tag atualmente definida
 # para a branch principal 'main'.
 tag-update-minor:
 	./tag-update.sh "version" "minor"
 
 #
-# Atualiza o 'major version'  da tag atualmente definida 
+# Atualiza o 'major version'  da tag atualmente definida
 # para a branch principal 'main'.
 tag-update-major:
 	./tag-update.sh "version" "major"
 
 #
-# Atualiza a 'stability' da tag atualmente definida 
+# Atualiza a 'stability' da tag atualmente definida
 # para a branch principal 'main'.
 #
 # Use o parametro 'stability' para indicar qual será a nova 'stability'.
