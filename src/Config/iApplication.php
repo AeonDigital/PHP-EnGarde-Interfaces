@@ -1,8 +1,8 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
-
 
 
 
@@ -30,9 +30,9 @@ interface iApplication
     /**
      * Retorna o nome da aplicação.
      *
-     * @return      string
+     * @return string
      */
-    function getAppName() : string;
+    public function getAppName(): string;
 
 
 
@@ -42,22 +42,22 @@ interface iApplication
      * Todas as demais configurações que indicam diretórios ou arquivos usando caminhos
      * relativos iniciam a partir deste diretório.
      *
-     * @return      string
+     * @return string
      */
-    function getAppRootPath() : string;
+    public function getAppRootPath(): string;
 
 
 
     /**
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o arquivo de rotas da aplicação.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToAppRoutes(bool $fullPath = false) : string;
+    public function getPathToAppRoutes(bool $fullPath = false): string;
 
 
 
@@ -65,13 +65,13 @@ interface iApplication
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório de controllers
      * da aplicação.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToControllers(bool $fullPath = false) : string;
+    public function getPathToControllers(bool $fullPath = false): string;
 
 
 
@@ -79,13 +79,13 @@ interface iApplication
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório das views
      * da aplicação.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToViews(bool $fullPath = false) : string;
+    public function getPathToViews(bool $fullPath = false): string;
 
 
 
@@ -93,13 +93,13 @@ interface iApplication
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório que estarão
      * armazenados os recursos para as views (imagens, JS, CSS ...).
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToViewsResources(bool $fullPath = false) : string;
+    public function getPathToViewsResources(bool $fullPath = false): string;
 
 
 
@@ -107,13 +107,13 @@ interface iApplication
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório que estarão
      * armazenados os documentos de configuração das legendas.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToLocales(bool $fullPath = false) : string;
+    public function getPathToLocales(bool $fullPath = false): string;
 
 
 
@@ -121,13 +121,13 @@ interface iApplication
      * Retorna o caminho relativo (a partir de ``appRootPath``) até o diretório de armazenamento
      * para os arquivos de cache.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToCacheFiles(bool $fullPath = false) : string;
+    public function getPathToCacheFiles(bool $fullPath = false): string;
 
 
 
@@ -137,13 +137,13 @@ interface iApplication
      *
      * O formato e conteúdo destes arquivos varia conforme a implementação realizada.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToLocalData(bool $fullPath = false) : string;
+    public function getPathToLocalData(bool $fullPath = false): string;
 
 
 
@@ -156,45 +156,45 @@ interface iApplication
     /**
      * Retorna a rota inicial da aplicação.
      *
-     * @return      string
+     * @return string
      */
-    function getStartRoute() : string;
+    public function getStartRoute(): string;
 
 
 
     /**
      * Retorna a Namespace comum à todos os controllers da aplicação corrente.
      *
-     * @return      string
+     * @return string
      */
-    function getControllersNamespace() : string;
+    public function getControllersNamespace(): string;
 
 
 
     /**
      * Retorna a coleção de locales suportada pela aplicação.
      *
-     * @return      array
+     * @return array
      */
-    function getLocales() : array;
+    public function getLocales(): array;
 
 
 
     /**
      * Retorna o locale padrão para a aplicação corrente.
      *
-     * @return      string
+     * @return string
      */
-    function getDefaultLocale() : string;
+    public function getDefaultLocale(): string;
 
 
 
     /**
      * Retorna ``true`` se a aplicação deve usar o sistema de legendas.
      *
-     * @return      bool
+     * @return bool
      */
-    function getIsUseLabels() : bool;
+    public function getIsUseLabels(): bool;
 
 
 
@@ -203,16 +203,16 @@ interface iApplication
      * aplicação. Estes valores podem ser sobrescritos pelas definições padrões dos controllers
      * e das próprias rotas.
      *
-     * @return      array
+     * @return array
      */
-    function getDefaultRouteConfig() : array;
+    public function getDefaultRouteConfig(): array;
     /**
      * Retorna um array de strings contendo em cada posição um dos diferentes métodos de obter
      * a rota a ser executada segundo a requisição atual.
      *
-     * @return      array
+     * @return array
      */
-    function getCheckRouteOrder() : array;
+    public function getCheckRouteOrder(): array;
 
 
 
@@ -227,24 +227,24 @@ interface iApplication
      * Resgata o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de erros
      * na aplicação.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToErrorView(bool $fullPath = false) : string;
+    public function getPathToErrorView(bool $fullPath = false): string;
     /**
      * Resgata o caminho relativo até a view que deve ser enviada ao ``UA`` em caso de necessidade
      * de envio de uma simples mensagem ``Http``.
      *
-     * @param       bool $fullPath
-     *              Se ``false`` retornará o caminho relativo.
-     *              Quando ``true`` deverá retornar o caminho completo.
+     * @param bool $fullPath
+     * Se ``false`` retornará o caminho relativo.
+     * Quando ``true`` deverá retornar o caminho completo.
      *
-     * @return      string
+     * @return string
      */
-    function getPathToHttpMessageView(bool $fullPath = false) : string;
+    public function getPathToHttpMessageView(bool $fullPath = false): string;
 
 
 
@@ -272,9 +272,9 @@ interface iApplication
      * ]
      * ```
      *
-     * @return      array
+     * @return array
      */
-    function getHttpSubSystemNamespaces() : array;
+    public function getHttpSubSystemNamespaces(): array;
 
 
 
@@ -288,10 +288,10 @@ interface iApplication
     /**
      * Inicia uma nova instância ``Config\iApplication``.
      *
-     * @param       array $config
-     *              Array associativo contendo as configurações para esta instância.
+     * @param array $config
+     * Array associativo contendo as configurações para esta instância.
      *
-     * @return      iApplication
+     * @return iApplication
      */
-    static function fromArray(array $config) : iApplication;
+    public static function fromArray(array $config): iApplication;
 }

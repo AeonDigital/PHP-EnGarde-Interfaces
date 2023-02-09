@@ -5,3 +5,4 @@ tests/cover*
 tests/.phpunit*
 vendor
 composer.lock
+src/PSR

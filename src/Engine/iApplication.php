@@ -1,8 +1,8 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Engine;
-
 
 
 
@@ -31,7 +31,7 @@ interface iApplication
     /**
      * Inicia o processamento da rota selecionada.
      *
-     * @return      void
+     * @return void
      */
-    function run() : void;
+    public function run(): void;
 }

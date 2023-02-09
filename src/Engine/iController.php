@@ -1,10 +1,10 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Engine;
 
 use AeonDigital\Interfaces\Http\Message\iResponse as iResponse;
-
 
 
 
@@ -32,7 +32,7 @@ interface iController
      * Aplica no objeto ``iResponse`` as propriedades ``viewData`` e ``routeConfig`` com os
      * valores resultantes do processamento da ``Action``.
      *
-     * @return      iResponse
+     * @return iResponse
      */
-    function getResponse() : iResponse;
+    public function getResponse(): iResponse;
 }

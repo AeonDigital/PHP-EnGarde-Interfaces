@@ -1,8 +1,8 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Config;
-
 
 
 
@@ -33,54 +33,54 @@ interface iSecurity
      * Retornará ``true`` se a aplicação estiver configurada para usar as definições de segurança.
      * Quando ``false`` indica que a aplicação é pública.
      *
-     * @return      bool
+     * @return bool
      */
-    function getIsActive() : bool;
+    public function getIsActive(): bool;
 
 
 
     /**
      * Retornará o nome do cookie que carrega informações da sessão atual do usuário.
      *
-     * @return      string
+     * @return string
      */
-    function getDataCookieName() : string;
+    public function getDataCookieName(): string;
 
 
 
     /**
      * Retornará o nome do cookie de autenticação.
      *
-     * @return      string
+     * @return string
      */
-    function getSecurityCookieName() : string;
+    public function getSecurityCookieName(): string;
 
 
 
     /**
      * Retorna a rota para o local onde o usuário faz login.
      *
-     * @return      string
+     * @return string
      */
-    function getRouteToLogin() : string;
+    public function getRouteToLogin(): string;
 
 
 
     /**
      * Retorna a rota para o local onde o usuário deve ser direcionado quando efetua o login.
      *
-     * @return      string
+     * @return string
      */
-    function getRouteToStart() : string;
+    public function getRouteToStart(): string;
 
 
 
     /**
      * Retorna a rota para o local onde o usuário pode ir para efetuar o reset de sua senha.
      *
-     * @return      string
+     * @return string
      */
-    function getRouteToResetPassword() : string;
+    public function getRouteToResetPassword(): string;
 
 
 
@@ -88,18 +88,18 @@ interface iSecurity
      * Retorna uma coleção de nomes de campos que servem como chaves identificadoras
      * para os usuários do sistema.
      *
-     * @return      array
+     * @return array
      */
-    function getLoginKeyNames() : array;
+    public function getLoginKeyNames(): array;
 
 
 
     /**
      * Retornará o Id do usuário anonimo da aplicação.
      *
-     * @return      int
+     * @return int
      */
-    function getAnonymousId() : int;
+    public function getAnonymousId(): int;
 
 
 
@@ -108,9 +108,9 @@ interface iSecurity
      * ``AeonDigital\EnGarde\Interfaces\Engine\iSession`` e que será responsável pelo
      * controle das sessões de UA na aplicação.
      *
-     * @return      string
+     * @return string
      */
-    function getSessionNamespace() : string;
+    public function getSessionNamespace(): string;
 
 
 
@@ -118,9 +118,9 @@ interface iSecurity
      * Indica se as sessões devem ser renovar a cada iteração do usuário.
      * O padrão é ``true``.
      *
-     * @return      bool
+     * @return bool
      */
-    function getIsSessionRenew() : bool;
+    public function getIsSessionRenew(): bool;
 
 
 
@@ -128,9 +128,9 @@ interface iSecurity
      * Retornará o tempo (em minutos) que cada sessão deve suportar de inatividade.
      * O padrão são 40 minutos.
      *
-     * @return      int
+     * @return int
      */
-    function getSessionTimeout() : int;
+    public function getSessionTimeout(): int;
 
 
 
@@ -138,9 +138,9 @@ interface iSecurity
      * Retornará o limite de falhas de login permitidas para um mesmo ``IP`` em um determinado
      * periodo. O padrão são 50 tentativas.
      *
-     * @return      int
+     * @return int
      */
-    function getAllowedFaultByIP() : int;
+    public function getAllowedFaultByIP(): int;
 
 
 
@@ -148,9 +148,9 @@ interface iSecurity
      * Retornará o tempo de bloqueio para um ``IP`` [em minutos].
      * O padrão são 50 minutos.
      *
-     * @return      int
+     * @return int
      */
-    function getIPBlockTimeout() : int;
+    public function getIPBlockTimeout(): int;
 
 
 
@@ -158,9 +158,9 @@ interface iSecurity
      * Retornará o limite de falhas permitidas para erros sucessivos de senha para um mesmo login.
      * O padrão são 5 tentativas.
      *
-     * @return      int
+     * @return int
      */
-    function getAllowedFaultByLogin() : int;
+    public function getAllowedFaultByLogin(): int;
 
 
 
@@ -168,9 +168,9 @@ interface iSecurity
      * Retornará o tempo de bloqueio para um Login [em minutos].
      * O padrão são 20 minutos.
      *
-     * @return      int
+     * @return int
      */
-    function getLoginBlockTimeout() : int;
+    public function getLoginBlockTimeout(): int;
 
 
 
@@ -183,9 +183,9 @@ interface iSecurity
      * venha de um IP que não esteja na lista previamente definida.
      * [tudo é proibido até que seja liberado]
      *
-     * @return      array
+     * @return array
      */
-    function getAllowedIPRanges() : array;
+    public function getAllowedIPRanges(): array;
     /**
      * Retorna uma coleção de intervalos de IPs que estão bloqueados de acessar a aplicação.
      *
@@ -193,9 +193,9 @@ interface iSecurity
      * venha de um IP que não esteja na lista previamente definida.
      * [tudo é permitido até que seja bloqueado]
      *
-     * @return      array
+     * @return array
      */
-    function getDeniedIPRanges() : array;
+    public function getDeniedIPRanges(): array;
     /**
      * Identifia se o IP informado está dentro dos ranges definidos como válidos para o
      * acesso a esta aplicação.
@@ -206,12 +206,12 @@ interface iSecurity
      *
      * Se nenhuma das regras estiver definido, todas as requisições serão aceitas.
      *
-     * @param       string $ip
-     *              IP que será testado em seu formato ``human readable``.
+     * @param string $ip
+     * IP que será testado em seu formato ``human readable``.
      *
-     * @return      bool
+     * @return bool
      */
-    function isAllowedIP(string $ip) : bool;
+    public function isAllowedIP(string $ip): bool;
 
 
 
@@ -222,10 +222,10 @@ interface iSecurity
      * Retorna uma instância configurada a partir de um array que contenha
      * as chaves correlacionadas a cada propriedade aqui definida.
      *
-     * @param       array $config
-     *              Array associativo contendo os valores a serem definidos para a instância.
+     * @param array $config
+     * Array associativo contendo os valores a serem definidos para a instância.
      *
-     * @return      iSecurity
+     * @return iSecurity
      */
-    static function fromArray(array $config) : iSecurity;
+    public static function fromArray(array $config): iSecurity;
 }

@@ -2,6 +2,7 @@
     "name": "aeondigital/phpengardeinterfaces",
     "description": "Interfaces do Micro-Framework EnGarde.",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rianna Cantarelli",
@@ -12,7 +13,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4"
+        "php": ">=8.2"
     },
     "autoload": {
         "classmap": [

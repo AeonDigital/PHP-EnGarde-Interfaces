@@ -1,10 +1,10 @@
 <?php
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace AeonDigital\EnGarde\Interfaces\Engine;
 
 use AeonDigital\EnGarde\Interfaces\Config\iRoute as iRoute;
-
 
 
 
@@ -40,9 +40,9 @@ interface iRouter
      * Também deve retornar ``true`` quando, por qualquer motivo definido na implementação, o
      * processamento anterior não existir ou for considerado como desatualizado.
      *
-     * @return      bool
+     * @return bool
      */
-    function isToProcessApplicationRoutes() : bool;
+    public function isToProcessApplicationRoutes(): bool;
 
 
 
@@ -51,12 +51,12 @@ interface iRouter
      * Idealmente o resultado deve ser um arquivo de configuração contendo todos os dados necessários
      * para a execução de cada rota de forma individual.
      *
-     * @return      void
+     * @return void
      *
-     * @throws      \RuntimeException
-     *              Caso algum erro ocorra no processo.
+     * @throws \RuntimeException
+     * Caso algum erro ocorra no processo.
      */
-    function processApplicationRoutes() : void;
+    public function processApplicationRoutes(): void;
 
 
 
@@ -66,13 +66,13 @@ interface iRouter
      *
      * Em caso de falha na identificação da rota será retornado ``null``.
      *
-     * @param       string $targetRoute
-     *              Porção relativa da ``URI`` que está sendo executada.
-     *              É necessário constar na rota, como sua primeira parte, o nome da aplicação
-     *              que está sendo executada.
-     *              Não deve constar quaisquer parametros ``querystring`` ou ``fragment``.
+     * @param string $targetRoute
+     * Porção relativa da ``URI`` que está sendo executada.
+     * É necessário constar na rota, como sua primeira parte, o nome da aplicação
+     * que está sendo executada.
+     * Não deve constar quaisquer parametros ``querystring`` ou ``fragment``.
      *
-     * @return      ?array
+     * @return ?array
      */
-    function selectTargetRawRoute(string $targetRoute) : ?array;
+    public function selectTargetRawRoute(string $targetRoute): ?array;
 }
